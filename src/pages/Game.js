@@ -58,7 +58,9 @@ function Game () {
        
   
     function submitQuest(e) {
+        
         e.preventDefault();
+        setQuestionStatus('')
         const quest = {firstValue , secondValue}
         getAnswer(quest);
         
