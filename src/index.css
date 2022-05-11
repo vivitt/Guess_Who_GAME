@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.game-main {
+  display: flex;
+  flex-flow: row wrap;
+}
+.charImg {
+  width: 150px;
+  
+ }

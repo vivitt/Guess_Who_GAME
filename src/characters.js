@@ -11,7 +11,7 @@ const characters = [
     "earrings": false,
     "hair-accessory": false,
     "braids": false,
-    "image": "./imgs/00_01.png",
+    "image": "00_01.png",
     "descr": "a person..... TODOOOO"
 
     }, 
@@ -28,7 +28,7 @@ const characters = [
     "hair-accessory": false,
     
     "braids": false,
-    "image": "./imgs/00_02.png",
+    "image": "00_02.png",
     "descr": "a person..... TODOOOO"
 
     }, 
@@ -45,7 +45,7 @@ const characters = [
     "hair-accessory": true,
     
     "braids": false,
-    "image": "./imgs/00_03.png",
+    "image": "00_03.png",
     "descr": "a person..... TODOOOO"
 
     }, 
@@ -62,7 +62,7 @@ const characters = [
     "hair-accessory": false,
     
     "braids": true,
-    "image": "./imgs/00_04.png",
+    "image": "00_04.png",
     "descr": "a person..... TODOOOO"
 
     },
@@ -79,7 +79,7 @@ const characters = [
     "hair-accessory": true,
     
     "braids": false,
-    "image": "./imgs/00_05.png",
+    "image": "00_05.png",
     "descr": "a person..... TODOOOO"
     }
 ]
