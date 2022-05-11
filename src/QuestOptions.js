@@ -1,2 +1,27 @@
-export const firstChoice = [ '', 'black', 'brown', 'blue', 'green', 'red', 'pink', 'yellow', 'short', 'long', 'hair', 'glasses', 'beard', 'earrings', 'hair-accessory', 'braids' ]
-export const secondChoice = [ '', 'hair', 'eyes', 'beard', 'glasses', 'hair-accessory', 'braids' ]
+export const firstChoice = { 
+    "":'', 
+    'black': 21, 
+    'brown': 22,
+    'blue': 23,
+    'green': 24, 
+    'red': 25,
+    'pink': 26,
+    'yellow': 27,
+    'gray': 28,
+    'short': 31,
+    'long': 32,
+    'hair': 41,
+    'glasses': 42,
+    'beard': 43,
+    'earrings': 44,
+    'hair-accessory': 45,
+    'braids': 46}
+export const secondChoice = { '':'',
+        'hair': 41,
+        'glasses': 42,
+        'beard': 43, 
+        'earrings': 44,
+        'hair-accessory': 45,
+        'braids': 46,
+        'eyes': 47
+    }

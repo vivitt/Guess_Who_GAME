@@ -55,27 +55,28 @@ function Game () {
         getRandomChar();
        }, {})
 
-       
+    //    (quest.firstValue === firstChoice[1] ||  quest.firstValue === firstChoice[2] || quest.firstValue === firstChoice[3]  || quest.firstValue === firstChoice[4] || quest.firstValue === firstChoice[5] || quest.firstValue === firstChoice[6] || quest.firstValue === firstChoice[7] || quest.firstValue === firstChoice[8] || quest.firstValue === firstChoice[9]) 
   
     function submitQuest(e) {
         
         e.preventDefault();
         setQuestionStatus('')
         const quest = {firstValue , secondValue}
-        getAnswer(quest);
-        setFirstValue('')
-        setSecondValue('')
-        
-    }
-    function getAnswer(quest) {
-       
-        if (quest.firstValue === firstChoice[1] ||  quest.firstValue === firstChoice[2] || quest.firstValue === firstChoice[3]  || quest.firstValue === firstChoice[4] || quest.firstValue === firstChoice[5] || quest.firstValue === firstChoice[6] || quest.firstValue === firstChoice[7] || quest.firstValue === firstChoice[8] || quest.firstValue === firstChoice[9]){
+        if ( firstValue < 32) {
             setQuestionStatus('error')
         } else {
             setQuestionStatus('ok')
         }
         console.log(questionStatus)
         console.log(quest)
+        setFirstValue('')
+        setSecondValue('')
+        
+    }
+    function getAnswer(quest) {
+       
+    
+        
      
        
         
@@ -92,21 +93,33 @@ function Game () {
             <div className="question">
                 <form>
                     <span>Does this person have     
-                        <select  value={firstValue} onChange={(e)=>setFirstValue(e.target.value)} >{firstChoice.map(item => (<option>{item}</option>))}</select> 
-                        
-                        <select  value={secondValue} onChange={(e)=>setSecondValue(e.target.value)} >{secondChoice.map(item => (<option>{item}</option>))}</select> 
+                        <select  value={firstValue} onChange={(e)=>setFirstValue(e.target.value)} >
+                            {Object.keys(firstChoice).map((key) => (<option value={firstChoice[key]}>{key}</option>))}
+                        </select> 
+                        <select  value={secondValue} onChange={(e)=>setSecondValue(e.target.value)} >
+                            {Object.keys(secondChoice).map(item => (<option value={item}>{item}</option>))}
+                        </select> 
                         ? 
-                        </span>
+                    </span>
                     
                    
                     <button onClick={submitQuest}>Send</button>
                 </form>
             </div>
+            {
+            (questionStatus !== '') &&
             <div className="answer">
-                <span><p>The answer to your last question is:</p>
-                        {/* <p><Answer></Answer></p> */}
+            <span>
+                {(questionStatus === 'error') ?
+                <p>This is not a valid question... Please try again</p>
+                
+                : <p>The answer to your last question is:</p>
+                        // {/* <p><Answer></Answer></p> */}
+
+                }
                 </span>
             </div>
+            }
         </div>
     )
 }
