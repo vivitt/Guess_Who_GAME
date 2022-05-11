@@ -1,0 +1,37 @@
+characters = [{
+    "id": Number,
+    "hair": Boolean,
+    "short-hair": Boolean,
+    "long-hair": Boolean,
+    "hair-color":,
+    "eyes-color":,
+    "glasses": Boolean,
+    "beard": Boolean,
+    "earrings": Boolean,
+    "hair-accessory": Boolean,
+    "skin-color": 
+    "braids": Boolean
+}]
+
+questions = 
+
+'Does this person have <select>
+                            <option>  </option>
+                            <option> short </option>
+                            <option> long </option>
+                            <option> black </option>
+                            <option> blue </option>
+                            <option> yellow </option>
+                            <option> pink </option>
+                            <option> gray </option>
+
+
+colors = {
+    "black": 01,
+    "brown": 02,
+    "blue": 03,
+    "green": 04,
+    "pink": 05,
+    "yellow": 06
+
+}
