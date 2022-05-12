@@ -5,12 +5,22 @@ const characters = [
         //hair
         '41': true,
         //short-hair
-        "shorthair": true,
+        "3141": true,
         //long-hair
-        "longhair": false,
+        "3241": false,
         //hair-color
-        "haircolor": 21,
-         //glasses
+        //"3041": 21,
+        '2141': true,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
+        //glasses
          '42': false,
          //beard
          '43': true,
@@ -40,11 +50,21 @@ const characters = [
         //hair
         '41': true,
         //short-hair
-        "shorthair": false,
+        "3141": false,
         //long-hair
-        "longhair": true,
+        "3241": true,
         //hair-color
-        "haircolor": 28,
+        //"haircolor": 28,
+        '2141': false,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": true,
+        "2941": false,
+        "3041": false,
          //glasses
          '42': false,
          //beard
@@ -65,13 +85,23 @@ const characters = [
     {
         "id": 113, 
         //hair
-        '41': 'unknown',
+        '41': 30,
         //short-hair
-        "shorthair": false,
+        "3141": false,
         //long-hair
-        "longhair": false,
+        "3241": false,
         //hair-color
-        "haircolor": 'unknown',
+        //"haircolor": 'unknown',
+        '2141': false,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": true,
          //glasses
          '42': false,
          //beard
@@ -93,11 +123,21 @@ const characters = [
         //hair
         '41': true,
         //short-hair
-        "shorthair": false,
+        "3141": false,
         //long-hair
-        "longhair": true,
+        "3241": true,
         //hair-color
-        "haircolor": 23,
+        //"haircolor": 23,
+        '2141': false,
+        "2241": false,
+        "2341": true,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
          //glasses
          '42': false,
          //beard
@@ -119,11 +159,22 @@ const characters = [
         //hair
         '41': true,
         //short-hair
-        "shorthair": true,
+        "3141": true,
         //long-hair
-        "longhair": false,
+        "3241": false,
         //hair-color
-        "haircolor": 23,
+        //"haircolor": 23,
+        '2141': false,
+        "2241": false,
+        "2341": true,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
+
          //glasses
          '42': true,
          //beard

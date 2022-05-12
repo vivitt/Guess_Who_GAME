@@ -9,6 +9,7 @@ export const firstChoice = {
     'pink': 27,
     'yellow': 28,
     'gray': 29,
+    //'unknown' : 30,
     'short': 31,
     'long': 32
     }

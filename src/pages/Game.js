@@ -26,10 +26,19 @@ function Game () {
     const [ selectedChar, setSelectedChar ] = useState({ 
         "id": 99, 
         '41': false,
-        "short-hair": false,
-        "long-hair": false,
-        "hair-color": 0,
-        
+        "3141": false,
+        "3241": false,
+        //"hair-color": 0,
+        '2141': false,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
         '42': false,
         '43': false,
         '44': false,
@@ -46,10 +55,19 @@ function Game () {
             setSelectedChar({ 
                 "id": random.id, 
                 '41': random[41],
-                "shorthair": random.shorthair,
-                "longhair": random.longhair,
-                "haircolor": random.haircolor,
-                
+                "3141": random[3141],
+                "3241": random[3241],
+                //"haircolor": random.haircolor,
+                '2141': random[2141],
+                "2241": random[2241],
+                "2341": random[2341],
+                "2441": random[2441],
+                "2541": random[2541],
+                "2641": random[2641],
+                "2741": random[2741],
+                "2841": random[2841],
+                "2941": random[2941],
+                "3041": random[3041],
                 '42': random[42],
                 '43': random[43],
                 '44': random[44],
@@ -61,9 +79,9 @@ function Game () {
             })
             console.log(selectedChar)
           };
-          useEffect(() => {
+        useEffect(() => {
             getRandomChar();
-           }, {})
+           }, [setSelectedChar])
     /////////////////////////////////////////////
  
     function submitQuest(e) {
@@ -83,19 +101,23 @@ function Game () {
     }
     
     function getAnswer(quest) {
+        setAnswer('')
+        console.log('1', selectedChar.id)
        if (quest.firstValue === '') {
             let check = (Object.keys(selectedChar).find((key) => key == quest.secondValue))
-            console.log(check) 
+            //console.log(check) 
             if (selectedChar[check] === true)
             {
-            //    console.log(selectedChar[secondValue])
+            console.log(selectedChar[check])
                setAnswer('Yes')
+               console.log('2', selectedChar.id)
             // } else if (selectedChar[secondValue] == 'unknown')
             
             // {
             //     setAnswer(`We really don't know`)
             }else {
                 setAnswer('No')
+                console.log('3', selectedChar.id)
             }
            
        } else {
