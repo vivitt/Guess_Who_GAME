@@ -102,36 +102,46 @@ function Game () {
     
     function getAnswer(quest) {
         setAnswer('')
-        console.log('1', selectedChar.id)
-       if (quest.firstValue === '') {
+        // console.log('1', selectedChar.id)
+        if (quest.firstValue === '') {
             let check = (Object.keys(selectedChar).find((key) => key == quest.secondValue))
-            //console.log(check) 
-            if (selectedChar[check] === true)
-            {
-            console.log(selectedChar[check])
-               setAnswer('Yes')
-               console.log('2', selectedChar.id)
-            // } else if (selectedChar[secondValue] == 'unknown')
+            if (selectedChar[check] === true) {
+                //console.log(selectedChar[check])
+                setAnswer('Yes')
+            } 
+            // else {
+            //     setAnswer('No')
+            //     //console.log('3', selectedChar.id)
+            // }
+        
             
-            // {
-            //     setAnswer(`We really don't know`)
-            }else {
-                setAnswer('No')
-                console.log('3', selectedChar.id)
+            } else {
+                if (quest.firstValue === '31' &&  quest.secondValue === '41' || quest.firstValue === '32' &&  quest.secondValue === '41') {
+                    let completeQuest = quest.firstValue + quest.secondValue
+                    let hairLengh = (Object.keys(selectedChar).find((key) => key == completeQuest))
+                    if (selectedChar[hairLengh] === true) {
+                        //console.log(selectedChar[check])
+                        setAnswer('Yes')
+                    } 
+                } else if (((quest.firstValue === '21' ) || (quest.firstValue === '22' ) || (quest.firstValue === '23' )) && quest.secondValue === '41') {
+                    let completeQuest = quest.firstValue + quest.secondValue
+                    let hairColor = (Object.keys(selectedChar).find((key) => key == completeQuest))
+                    
+                    if (selectedChar[hairColor] === true) {
+                        //console.log(selectedChar[check])
+                        setAnswer('Yes, he/she has black hair')
+                
+                    }
+                
+                
+                } else {
+                setAnswer('workin on your answer')
             }
-           
-       } else {
-           setAnswer('workin on your answer')
-       }
-    
+        }
         
      
-       
-        
-    }
-
-
-
+    
+}
     return (
         <div>
             <h2>Guess who GAME</h2>

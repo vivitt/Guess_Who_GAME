@@ -85,7 +85,7 @@ const characters = [
     {
         "id": 113, 
         //hair
-        '41': 30,
+        //'41': 30,
         //short-hair
         "3141": false,
         //long-hair
