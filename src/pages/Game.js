@@ -81,7 +81,7 @@ function Game () {
           };
         useEffect(() => {
             getRandomChar();
-           }, [setSelectedChar])
+           }, {})
     /////////////////////////////////////////////
  
     function submitQuest(e) {
@@ -108,37 +108,31 @@ function Game () {
             if (selectedChar[check] === true) {
                 //console.log(selectedChar[check])
                 setAnswer('Yes')
-            } 
-            // else {
-            //     setAnswer('No')
-            //     //console.log('3', selectedChar.id)
-            // }
-        
-            
             } else {
-                if (quest.secondValue === '41') {
-                    if (quest.firstValue === '31' || quest.firstValue === '32' ) {
-                        let completeQuest = quest.firstValue + quest.secondValue
-                        let hairLengh = (Object.keys(selectedChar).find((key) => key == completeQuest))
-                            if (selectedChar[hairLengh] === true) {
+                setAnswer('No')
+                //console.log('3', selectedChar.id)
+            }
+        } else {
+            if (quest.secondValue === '41') {
+                if (quest.firstValue === '31' || quest.firstValue === '32' ) {
+                    let completeQuest = quest.firstValue + quest.secondValue
+                    let hairLengh = (Object.keys(selectedChar).find((key) => key == completeQuest))
+                        if (selectedChar[hairLengh] === true) {
                             //console.log(selectedChar[check])
+                            setAnswer('Yes')
                         } else {
                             setAnswer('No')
                         }
-                    } else {
-
-                        let completeQuest = quest.firstValue + quest.secondValue
-                        let hairColor = (Object.keys(selectedChar).find((key) => key == completeQuest))
-                    
-                            if (selectedChar[hairColor] === true) {
-                            //console.log(selectedChar[check])
-                            setAnswer('Yes, he/she has black hair')
+                } else {
+                    let completeQuest = quest.firstValue + quest.secondValue
+                    let hairColor = (Object.keys(selectedChar).find((key) => key == completeQuest))
+                    if (selectedChar[hairColor] === true) {
+                        //console.log(selectedChar[check])
+                        setAnswer(`Yes, he/she has ${quest.firstValue} hair`)
                              } else {
                                 setAnswer('No')
                              }
-                
-                
-                    } 
+                } 
                 setAnswer('workin on your answer')
             }
         }
