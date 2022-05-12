@@ -116,25 +116,29 @@ function Game () {
         
             
             } else {
-                if (quest.firstValue === '31' &&  quest.secondValue === '41' || quest.firstValue === '32' &&  quest.secondValue === '41') {
-                    let completeQuest = quest.firstValue + quest.secondValue
-                    let hairLengh = (Object.keys(selectedChar).find((key) => key == completeQuest))
-                    if (selectedChar[hairLengh] === true) {
-                        //console.log(selectedChar[check])
-                        setAnswer('Yes')
-                    } 
-                } else if (((quest.firstValue === '21' ) || (quest.firstValue === '22' ) || (quest.firstValue === '23' )) && quest.secondValue === '41') {
-                    let completeQuest = quest.firstValue + quest.secondValue
-                    let hairColor = (Object.keys(selectedChar).find((key) => key == completeQuest))
+                if (quest.secondValue === '41') {
+                    if (quest.firstValue === '31' || quest.firstValue === '32' ) {
+                        let completeQuest = quest.firstValue + quest.secondValue
+                        let hairLengh = (Object.keys(selectedChar).find((key) => key == completeQuest))
+                            if (selectedChar[hairLengh] === true) {
+                            //console.log(selectedChar[check])
+                        } else {
+                            setAnswer('No')
+                        }
+                    } else {
+
+                        let completeQuest = quest.firstValue + quest.secondValue
+                        let hairColor = (Object.keys(selectedChar).find((key) => key == completeQuest))
                     
-                    if (selectedChar[hairColor] === true) {
-                        //console.log(selectedChar[check])
-                        setAnswer('Yes, he/she has black hair')
+                            if (selectedChar[hairColor] === true) {
+                            //console.log(selectedChar[check])
+                            setAnswer('Yes, he/she has black hair')
+                             } else {
+                                setAnswer('No')
+                             }
                 
-                    }
                 
-                
-                } else {
+                    } 
                 setAnswer('workin on your answer')
             }
         }
