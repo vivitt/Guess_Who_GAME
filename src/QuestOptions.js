@@ -5,17 +5,13 @@ export const firstChoice = {
     'blue': 23,
     'green': 24, 
     'red': 25,
-    'pink': 26,
-    'yellow': 27,
-    'gray': 28,
+    'orange': 26,
+    'pink': 27,
+    'yellow': 28,
+    'gray': 29,
     'short': 31,
-    'long': 32,
-    'hair': 41,
-    'glasses': 42,
-    'beard': 43,
-    'earrings': 44,
-    'hair-accessory': 45,
-    'braids': 46}
+    'long': 32
+    }
 export const secondChoice = { '':'',
         'hair': 41,
         'glasses': 42,

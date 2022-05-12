@@ -10,12 +10,12 @@ function Home () {
     const [ value, setValue ] = useState("")
 
     const navigate = useNavigate();
-    
+    const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1)
+    ;
     function submitName(event) {
         event.preventDefault()
         currentUser.setUserName(value);
-        const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1)
-        ;
+       
         setValue("")
         console.log(userPlay)
     }
@@ -33,7 +33,7 @@ function Home () {
         </div>
         {
             (currentUser.userName) && <div>
-                <p>Hi, {currentUser.userName}</p>
+                <p>Hi, {userPlay}</p>
                 <button onClick={navGame}>PLAY</button>
                 <button onClick={navHowToPlay} >?</button>
             </div>
