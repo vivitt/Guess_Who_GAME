@@ -17,5 +17,19 @@ code {
 }
 .charImg {
   width: 150px;
+  z-index: 10;
   
+ }
+ .discard {
+   background-color: blueviolet;
+   
+ }
+
+ .discard::after {
+   content: 'x';
+   z-index: 100;
+   position: absolute;
+   top: 200px;
+   font-size: 8rem;
+   color: blueviolet;
  }

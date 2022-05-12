@@ -1,86 +1,194 @@
+
 const characters = [
-    {
-        "id": 11,
-        "hair": true,
-    "short-hair": true,
-    "long-hair": false,
-    "hair-color": 1,
-    "eyes-color": 2,
-    "glasses": false,
-    "beard": false,
-    "earrings": false,
-    "hair-accessory": false,
-    "braids": false,
-    "image": "00_01.png",
-    "descr": "a person..... TODOOOO"
+    {   
+        "id": 111, 
+        //hair
+        '41': true,
+        //short-hair
+        "3141": true,
+        //long-hair
+        "3241": false,
+        //hair-color
+        //"3041": 21,
+        '2141': true,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
+        //glasses
+         '42': false,
+         //beard
+         '43': true,
+         //earrings
+         '44': false,
+         //hair-accessory
+         '45': false,
+         //braids
+         '46': false,
+         //eyes-color
+         '47': 22,
+       
+        "image": "00_01.png",
+        "descr": "person 1"
+           //TODO
+        //short beard
+        //long-beard
+        //beard-color
+        //short-braids
+        //long-braids
+        //braids-color
+
 
     }, 
     {
-        "id": 12,
-        "hair": true,
-    "short-hair": false,
-    "long-hair": true,
-    "hair-color": 6,
-    "eyes-color": 3,
-    "glasses": false,
-    "beard": true,
-    "earrings": false,
-    "hair-accessory": false,
-    
-    "braids": false,
-    "image": "00_02.png",
-    "descr": "a person..... TODOOOO"
-
+        "id": 112, 
+        //hair
+        '41': true,
+        //short-hair
+        "3141": false,
+        //long-hair
+        "3241": true,
+        //hair-color
+        //"haircolor": 28,
+        '2141': false,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": true,
+        "2941": false,
+        "3041": false,
+         //glasses
+         '42': false,
+         //beard
+         '43': false,
+         //earrings
+         '44': false,
+         //hair-accessory
+         '45': false,
+         //braids
+         '46': false,
+         //eyes-color
+         '47': 23,
+       
+        "image": "00_02.png",
+        "descr": "person 2"
+       
     }, 
     {
-        "id": 13,
-        "hair": false,
-    "short-hair": false,
-    "long-hair": false,
-    "hair-color": 9,
-    "eyes-color": 2,
-    "glasses": false,
-    "beard": false,
-    "earrings": false,
-    "hair-accessory": true,
-    
-    "braids": false,
+        "id": 113, 
+        //hair
+        '41': 30,
+        //short-hair
+        "3141": false,
+        //long-hair
+        "3241": false,
+        //hair-color
+        //"haircolor": 'unknown',
+        '2141': false,
+        "2241": false,
+        "2341": false,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": true,
+         //glasses
+         '42': false,
+         //beard
+         '43': false,
+         //earrings
+         '44': false,
+         //hair-accessory
+         '45': true,
+         //braids
+         '46': false,
+         //eyes-color
+         '47': 22,
     "image": "00_03.png",
-    "descr": "a person..... TODOOOO"
+    "descr": "person 3"
 
     }, 
     {
-        "id": 14,
-        "hair": true,
-    "short-hair": false,
-    "long-hair": true,
-    "hair-color": 3,
-    "eyes-color": 2,
-    "glasses": false,
-    "beard": false,
-    "earrings": false,
-    "hair-accessory": false,
-    
-    "braids": true,
+        "id": 114, 
+        //hair
+        '41': true,
+        //short-hair
+        "3141": false,
+        //long-hair
+        "3241": true,
+        //hair-color
+        //"haircolor": 23,
+        '2141': false,
+        "2241": false,
+        "2341": true,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
+         //glasses
+         '42': false,
+         //beard
+         '43': false,
+         //earrings
+         '44': false,
+         //hair-accessory
+         '45': false,
+         //braids
+         '46': true,
+         //eyes-color
+         '47': 22,
     "image": "00_04.png",
-    "descr": "a person..... TODOOOO"
+    "descr": "person 4"
 
     },
     {
-        "id": 15,
-        "hair": true,
-    "short-hair": true,
-    "long-hair": false,
-    "hair-color": 3,
-    "eyes-color": 3,
-    "glasses": true,
-    "beard": false,
-    "earrings": false,
-    "hair-accessory": true,
-    
-    "braids": false,
+        "id": 115, 
+        //hair
+        '41': true,
+        //short-hair
+        "3141": true,
+        //long-hair
+        "3241": false,
+        //hair-color
+        //"haircolor": 23,
+        '2141': false,
+        "2241": false,
+        "2341": true,
+        "2441": false,
+        "2541": false,
+        "2641": false,
+        "2741": false,
+        "2841": false,
+        "2941": false,
+        "3041": false,
+
+         //glasses
+         '42': true,
+         //beard
+         '43': false,
+         //earrings
+         '44': false,
+         //hair-accessory
+         '45': true,
+         //braids
+         '46': false,
+         //eyes-color
+         '47': 23,
     "image": "00_05.png",
-    "descr": "a person..... TODOOOO"
+    "descr": "person 5"
     }
 ]
 
