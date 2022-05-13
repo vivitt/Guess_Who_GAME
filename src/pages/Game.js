@@ -19,6 +19,7 @@ function Game () {
     const [ firstValue, setFirstValue ] = useState('')
     const [ secondValue, setSecondValue ] = useState('')
     const [ questionStatus, setQuestionStatus ] = useState('')
+    const [ questCounter, setQuestCounter ] = useState(0);
     const [ answer, setAnswer ] = useState('')
 
     const [haveWinner, setHaveWinner] = useState(false);
@@ -116,6 +117,7 @@ function Game () {
         } else {
             setQuestionStatus('ok')
             getAnswer(quest)
+            setQuestCounter(questCounter+1)
         }
         // console.log(questionStatus)
         console.log(quest)
@@ -150,9 +152,11 @@ function Game () {
         if (guess == selectedChar.id) {
             setHaveWinner(true);
             console.log('winner')
-        }
+            console.log(questCounter)
 
+        }
     }
+    
     return (
         <div>
             <h2>Guess who GAME</h2>
