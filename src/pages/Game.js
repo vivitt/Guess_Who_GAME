@@ -1,4 +1,6 @@
 
+
+
 import { useEffect, useState } from "react"
 import characters from "../characters"
 import Char  from  "../components/Char"
@@ -6,13 +8,19 @@ import Char  from  "../components/Char"
 import { firstChoice, secondChoice } from "../QuestOptions"
 // import GetAnswer from '../GetAnswer'
 import { useUserContext } from "../context/UserContextProv"
+import WinnerDialog from '../components/MyDialog';
+
+
+
+
 
 function Game () {
-    
+    // ////DIALOG
+    // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
     //USERNAME
     const currentUser = useUserContext()
-    const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1)
-    ;
+    const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
+    const [seconds, setSeconds] = useState(0);
     
     ////////////////////////////////////
     const [ currentChars, setCurrentChars ] = useState([])
@@ -21,7 +29,7 @@ function Game () {
     const [ questionStatus, setQuestionStatus ] = useState('')
     const [ questCounter, setQuestCounter ] = useState(0);
     const [ answer, setAnswer ] = useState('')
-
+    const [ timeNeeded, setTimeNeeded ] = useState(0)
     const [haveWinner, setHaveWinner] = useState(false);
     ////////////////////////////////////
     
@@ -101,6 +109,10 @@ function Game () {
                 "descr": random.descr
             })
             console.log(selectedChar)
+            let interval = null;
+            interval = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+              }, 1000);
           }
         useEffect(() => {
             getRandomChar();
@@ -153,7 +165,8 @@ function Game () {
             setHaveWinner(true);
             console.log('winner')
             console.log(questCounter)
-
+            setTimeNeeded(seconds/60)
+            setSeconds(0)
         }
     }
     
@@ -196,6 +209,12 @@ function Game () {
                     <input type='text' value={guess} onChange={(e)=>setGuess(e.target.value)}></input>
                     <button onClick={submitGuess}>Try</button>
                 </form>
+            </div>
+            <div>
+            {(haveWinner === true) && <WinnerDialog time={timeNeeded} questCounter={questCounter} getRandomChar={getRandomChar} />
+   
+
+            }
             </div>
         </div>
     )
