@@ -24,6 +24,10 @@ const characters = [
          //'0042': false,
          //beard
          '0043': true,
+         //short-beard
+         '3143': true,
+         //long-beard
+         //'3243':true
          //earrings
          //'0044': false,
          //hair-accessory
@@ -167,6 +171,41 @@ const characters = [
         // '2141': false,
         // "2241": false,
         "2341": true,
+        // "2441": false,
+        // "2541": false,
+        // "2641": false,
+        // "2741": false,
+        // "2841": false,
+        // "2941": false,
+        // "3041": false,
+
+         //glasses
+         '0042': true,
+         //beard
+         //'0043': false,
+         //earrings
+         //'0044': false,
+         //hair-accessory
+         '0045': true,
+         //braids
+         //'0046': false,
+         //eyes-color
+         '2347': true,
+    "image": "00_05.png",
+    "descr": "person 5"
+    }, {
+        "id": 116, 
+        //hair
+        '0041': true,
+        //short-hair
+        "3141": true,
+        //long-hair
+        // "3241": false,
+        //hair-color
+        //"haircolor": 23,
+        // '2141': false,
+        // "2241": false,
+        //"2341": true,
         // "2441": false,
         // "2541": false,
         // "2641": false,

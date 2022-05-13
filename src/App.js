@@ -16,10 +16,12 @@ import Footer from './components/Footer'
 //CONTEXT
 import { RequireName } from './context/RequireName'
 import { UserContextProv } from './context/UserContextProv'
+import SelectedCharContextProv, { SelectedCharContext } from './context/SelectedCharContx';
 
 function App() {
   return (
     <UserContextProv >
+      <SelectedCharContextProv>
       <div className="app">
         <Router>
          <div className="nav-bar">
@@ -42,7 +44,9 @@ function App() {
                    <Route path="/" element={<Home />} /> 
                    {/* <Route path="/login" element={<Login />} />
                    <Route path="/register" element={<Register />} /> */}
+                   
                    <Route path="/game" element={ <RequireName><Game /> </RequireName>} /> 
+                   
                    <Route path="/howtoplay" element={ <HowToPlay />  } />
                    <Route path="*" element={<NotFound />} />
                  </Routes>
@@ -50,7 +54,7 @@ function App() {
              </Router>
              <Footer text={'© Viviana Yanez 2022 | Guess Who Game | Made with ♥︎ '}/>
            </div>
-             
+           </SelectedCharContextProv>  
           </UserContextProv>
    
   );

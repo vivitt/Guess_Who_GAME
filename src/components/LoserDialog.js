@@ -6,29 +6,33 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"; 
+import { useSelectedCharContext } from "../context/SelectedCharContx";
 
-
-function WinnerDialog({time, questCounter, getRandomChar}){
+function LoserDialog({getRandomChar}){
     const [open, setOpen] = React.useState(true);
     const navigate = useNavigate()
-
-    const navGame = () => navigate('/game')
+    const charToGuess = useSelectedCharContext()
+    function navGame() { 
+      getRandomChar();
+      setOpen(false);}
     const navHome = () => navigate('/')
-    const handleToClose = () => {
-    setOpen(false);
-    
-    };
+   
+    const divStyle = {
+      backgroundColor: "red", // camel cased
+      height: "100px",
+      
+ }
   
     return (
-    <div stlye={{}}>
+    <div stlye={divStyle}>
         
       
-      <Dialog open={open} >
-        <DialogTitle>{"Yeah!! You Win!!!!"}</DialogTitle>
+      <Dialog  style={{ color: 'pink'}} open={open} >
+        <DialogTitle>{":( "}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             
-            <p>You needed {time} minutes and {questCounter} questions to guess</p>
+            <p>Run out of tries</p>
           </DialogContentText>
        
         </DialogContent>
@@ -51,4 +55,4 @@ function WinnerDialog({time, questCounter, getRandomChar}){
     
    
 
-export default WinnerDialog
+export default LoserDialog
