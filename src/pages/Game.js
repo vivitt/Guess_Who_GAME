@@ -20,12 +20,14 @@ function Game () {
     const [ secondValue, setSecondValue ] = useState('')
     const [ questionStatus, setQuestionStatus ] = useState('')
     const [ answer, setAnswer ] = useState('')
+
+    const [haveWinner, setHaveWinner] = useState(false);
     ////////////////////////////////////
     
     ///GET RANDOM CHAR
     const [ selectedChar, setSelectedChar ] = useState({ 
-        "id": 99, 
-        '41': false,
+        "id": '99', 
+        '0041': false,
         "3141": false,
         "3241": false,
         //"hair-color": 0,
@@ -39,14 +41,25 @@ function Game () {
         "2841": false,
         "2941": false,
         "3041": false,
-        '42': false,
-        '43': false,
-        '44': false,
-        '45': false,
-        '46': false,
-        '47': '',
+        '0042': false,
+        '0043': false,
+        '0044': false,
+        '0045': false,
+        '0046': false,
+        //'0047': '',
+        '2147': false,
+        '2247': false,
+        '2347': false,
+        '2447': false,
+        '2547': false,
+        '2647': false,
+        '2747': false,
+        '2847': false,
+        '2947':false,
+
         "image": "",
-        "descr": ""})
+        "descr": ""
+    })
     
 
         const getRandomChar = () => {
@@ -54,36 +67,46 @@ function Game () {
             const random = characters[Math.floor(Math.random() * len)]
             setSelectedChar({ 
                 "id": random.id, 
-                '41': random[41],
-                "3141": random[3141],
-                "3241": random[3241],
-                //"haircolor": random.haircolor,
-                '2141': random[2141],
-                "2241": random[2241],
-                "2341": random[2341],
-                "2441": random[2441],
-                "2541": random[2541],
-                "2641": random[2641],
-                "2741": random[2741],
-                "2841": random[2841],
-                "2941": random[2941],
-                "3041": random[3041],
-                '42': random[42],
-                '43': random[43],
-                '44': random[44],
-                '45': random[45],
-                '46': random[46],
-                '47': random[47],
+                '0041': random['0041'],
+                "3141": random['3141'],
+                "3241": random['3241'],
+                //"haircolor": 'random.haircolor,
+                '2141': random['2141'],
+                "2241": random['2241'],
+                "2341": random['2341'],
+                "2441": random['2441'],
+                "2541": random['2541'],
+                "2641": random['2641'],
+                "2741": random['2741'],
+                "2841": random['2841'],
+                "2941": random['2941'],
+                "3041": random['3041'],
+                '0042': random['0042'],
+                '0043': random['0043'],
+                '0044': random['0044'],
+                '0045': random['0045'],
+                '0046': random['0046'],
+                //'0047': random['0047'],
+                '2147': random['2147'],
+                '2247': random['2247'],
+                '2347': random['2347'],
+                '2447': random['2447'],
+                '2547': random['2547'],
+                '2647': random['2647'],
+                '2747': random['2747'],
+                '2847': random['2847'],
+                '2947': random['2947'],
                 "image": random.image,
                 "descr": random.descr
             })
             console.log(selectedChar)
-          };
+          }
         useEffect(() => {
             getRandomChar();
-           }, [setSelectedChar])
+           }, [])
     /////////////////////////////////////////////
- 
+           /////\\\\\\\ Q & A ////////\\\\\\\
+    
     function submitQuest(e) {
         e.preventDefault();
         setQuestionStatus('')
@@ -96,42 +119,40 @@ function Game () {
         }
         // console.log(questionStatus)
         console.log(quest)
-        setFirstValue('')
+        setFirstValue('00')
         setSecondValue('')
     }
     
     function getAnswer(quest) {
-        setAnswer('')
-        console.log('1', selectedChar.id)
-       if (quest.firstValue === '') {
-            let check = (Object.keys(selectedChar).find((key) => key == quest.secondValue))
-            //console.log(check) 
-            if (selectedChar[check] === true)
-            {
-            console.log(selectedChar[check])
-               setAnswer('Yes')
-               console.log('2', selectedChar.id)
-            // } else if (selectedChar[secondValue] == 'unknown')
-            
-            // {
-            //     setAnswer(`We really don't know`)
-            }else {
-                setAnswer('No')
-                console.log('3', selectedChar.id)
-            }
-           
-       } else {
-           setAnswer('workin on your answer')
-       }
+        //setAnswer('')
+        let currentQuest = quest.firstValue + quest.secondValue;
+        // console.log('1', selectedChar.id)
+        console.log(currentQuest)
+        let check = (Object.keys(selectedChar).find((key) => key === currentQuest))
+        if (selectedChar[check] == true) {
+            //console.log(selectedChar[check])
+            setAnswer('Yes')
+        } else {
+            setAnswer('No')
+                //console.log('3', selectedChar.id)
+        }
+ 
     
-        
-     
-       
-        
     }
+    //////////////////////////////////////////////////////
 
+    ///\\\\\\ GUESS ////////\\\\\\\\\
 
+    const [ guess, setGuess ] = useState('')
 
+    function submitGuess(e) {
+        e.preventDefault();
+        if (guess == selectedChar.id) {
+            setHaveWinner(true);
+            console.log('winner')
+        }
+
+    }
     return (
         <div>
             <h2>Guess who GAME</h2>
@@ -150,23 +171,28 @@ function Game () {
                         </select> 
                         ? 
                     </span>
-                    
-                   
                     <button onClick={submitQuest}>Send</button>
                 </form>
             </div>
+            
             {
             (questionStatus !== '') &&
             <div className="answer">
-            <span>
-                {(questionStatus === 'error') ?
-                <p>This is not a valid question... Please try adding a word</p>
-                
-                : <p>The answer to your last question is: {answer} </p> 
-                }
+                <span>
+                    { (questionStatus === 'error') 
+                    ? <p>This is not a valid question... Please try adding a word</p>
+                    : <p>The answer to your last question is: {answer} </p> 
+                    }
                 </span>
             </div>
             }
+
+            <div className="guess">
+                <form>
+                    <input type='text' value={guess} onChange={(e)=>setGuess(e.target.value)}></input>
+                    <button onClick={submitGuess}>Try</button>
+                </form>
+            </div>
         </div>
     )
 }
