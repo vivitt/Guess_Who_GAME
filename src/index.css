@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #A98DB8;
 }
 
 code {
@@ -19,13 +20,5 @@ code {
   display: flex;
   flex-flow: row wrap;
 }
-.charImg {
-  width: 150px;
-  z-index: 10;
-  
- }
- .discard {
-   background-color: blueviolet;
-   
- }
+
 

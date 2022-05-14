@@ -27,9 +27,9 @@ function LoserDialog({getRandomChar}){
     <div stlye={divStyle}>
         
       
-      <Dialog  style={{ color: 'pink'}} open={open} >
-        <DialogTitle>{":( "}</DialogTitle>
-        <DialogContent>
+      <Dialog  open={open} >
+        <DialogTitle sx={{ backgroundColor: '#A98DB8'}}>{":( "}</DialogTitle>
+        <DialogContent sx={{ backgroundColor: '#A98DB8'}}>
           <DialogContentText>
             
             <p>Run out of tries</p>
