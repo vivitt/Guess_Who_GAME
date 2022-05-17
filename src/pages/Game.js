@@ -16,7 +16,7 @@ import CurrentGameInfo from "../components/CurrentGameInfo"
 import GuessSection from "../components/GuessSection"
 import Clock from "../components/Clock"
 import HowToPlayDialog from "../components/HowToPlayDialog"
-function Game ({mode, setMode, openHowTo, setOpenHowTo}) {
+function Game ({mode, setMode}) {
     // ////DIALOG
     // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
     //USERNAME
@@ -109,9 +109,12 @@ function Game ({mode, setMode, openHowTo, setOpenHowTo}) {
     const [ tries, setTries ] = useState(0)
     function submitGuess(e) {
         e.preventDefault();
+        if (guess !== '')
         setTries(tries+1)
         setGuess('')
-        if (guess == charToGuess.selectedChar.id) {
+        console.log(guess)
+        console.log(charToGuess.selectedChar.id)
+        if (guess.toUpperCase() === charToGuess.selectedChar.id) {
             setHaveWinner(true);
             console.log('winner')
             console.log(questCounter)
@@ -137,17 +140,14 @@ function Game ({mode, setMode, openHowTo, setOpenHowTo}) {
 
                         <div className="rigth-game">
                             <div className="playerArea">
-                            <Clock mins={mins} secs={secs}></Clock>
+                                <Clock mins={mins} secs={secs}></Clock>
                                 <CurrentGameInfo userPlay={userPlay} />
-                                
                             </div>
-                            
-                            <div className="inputGame">
-                                <QuestionInput firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
-                                <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
+                            <QuestionInput  firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
+                            <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
                               
                             
-                            </div>
+                            
                         </div>
                     </div>
                 </Paper>
@@ -155,10 +155,7 @@ function Game ({mode, setMode, openHowTo, setOpenHowTo}) {
             {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  /> }
             {(haveLoser === true) && <LoserDialog  getRandomChar={getRandomChar} />}
             </div>
-            <div>
-            {(openHowTo === true) && <HowToPlayDialog  /> }
-            
-            </div>
+          
         </div>
         </ThemeProvider>
     )

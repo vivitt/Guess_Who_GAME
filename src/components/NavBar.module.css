@@ -16,7 +16,7 @@
     font-size: 5rem;
     margin: 0;
     text-shadow: 2px 2px #E91E63;
-    padding-right: 8rem;
+    /*padding-right: 8rem;*/
 }
 .navBar ul {
     display: flex;

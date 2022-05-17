@@ -6,7 +6,8 @@ function GuessSection ({guess, setGuess, submitGuess, tries, mode}) {
         
         <h3>Try to Guess</h3>
         <form>
-            <TextField value={guess} label="Enter the name of the person" onChange={(e)=>setGuess(e.target.value)}></TextField>
+            
+            <TextField value={guess}  label="ENTER A NAME" onChange={(e)=>setGuess(e.target.value)} sx={{backgroundColor: '#FFF176'}}></TextField>
             <Button onClick={submitGuess} variant="contained" color="secondary"  >Try</Button>
         </form>
         {(mode === 'easy') && <h4>{tries}/3</h4>}

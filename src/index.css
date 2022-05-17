@@ -30,13 +30,20 @@ body {
   display: flex;
   flex-flow: row nowrap;
   
+  
+}
+.box {
+  justify-content: center;
+  align-items: center;
 }
 
 
+
 .homeImg img {
-  width: 100%;
-  max-width: 700px;
+  
+  max-width: 100%;
   opacity: 10;
+  margin-top: auto;
 }
 .rigth, .rigth-game {
   display: flex;
@@ -176,3 +183,42 @@ body {
     opacity: 15%;
   
    } 
+
+
+
+   @media (max-width: 799px) {
+    .box, .game {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    .game-main {
+      order: 2;
+      max-width: 100%;
+    }
+    .rigth-game {
+      
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      
+      align-items: flex-start;
+      max-width: 100%;
+      justify-content: flex-end;
+      
+     
+      
+    }
+ 
+    .playerArea {
+      order: 1;
+      
+    }
+  
+      
+    }
+    
+   

@@ -1,4 +1,5 @@
 import React from "react"
+import { useState } from "react";
 import { NavLink } from "react-router-dom"
 import { useUserContext } from "../context/UserContextProv"
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
@@ -7,15 +8,19 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Button } from '@material-ui/core'
 import style from './NavBar.module.css';
 import { pink, grey } from "@material-ui/core/colors";
+import HowToPlayDialog from "./HowToPlayDialog";
 
-function NavBar(setOpenHowTo) {
+function NavBar() {
     const currentUser = useUserContext()
+    
+    const [open, setOpen] = React.useState(false);
+    
     function deleteCurrentUser() {
         currentUser.setUserName('')
     }
-    function openHowTo() {
-        
-        setOpenHowTo(true)
+    function openHandler(e) {
+        e.preventDefault()
+        setOpen(true)
         console.log('click')
     }
     return (
@@ -28,7 +33,7 @@ function NavBar(setOpenHowTo) {
                 </li>
                 
                 <li>
-                 <Button onClick={openHowTo}><QuestionMarkIcon sx={{ color: pink[500], textShadow: grey[100] }} /></Button>
+                 <Button onClick={openHandler}><QuestionMarkIcon sx={{ color: pink[500], textShadow: grey[100] }} /></Button>
                 </li>
                 
                 
@@ -46,6 +51,13 @@ function NavBar(setOpenHowTo) {
           
             
              </ul>
+
+             <div>
+            {(open === true) && <HowToPlayDialog  open={open} setOpen={setOpen} /> }
+            
+            </div>
+
+
         </div>
        
     )

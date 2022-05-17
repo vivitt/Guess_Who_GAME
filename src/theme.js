@@ -1,5 +1,6 @@
 import { createTheme } from "@material-ui/core";
 import { pink, deepPurple, teal, yellow, grey } from "@material-ui/core/colors";
+import { CenterFocusStrong } from "@mui/icons-material";
 import { flexbox, textAlign } from "@mui/system";
 
 const theme = createTheme({
@@ -7,7 +8,8 @@ const theme = createTheme({
         primary: {
             main: deepPurple[500],
             contrastText: yellow[300],
-            accent: grey[100]
+            accent: grey[100],
+            input: yellow[200],
         },
         secondary: {
             main: teal[100],
@@ -106,6 +108,14 @@ theme.props = {
      
       
     }, 
+    MuiTextField: {
+      root: {
+        backgroundColor: theme.palette.primary.input,
+        borderRadius: 8,
+        padding: 1,
+        margin: 3
+      }
+    },
 
     MuiDialog: {
      root: {

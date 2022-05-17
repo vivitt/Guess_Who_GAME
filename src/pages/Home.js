@@ -13,7 +13,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 
-function Home ({mode, setMode, openHowTo, setOpenHowTo}) {
+function Home ({mode, setMode}) {
     
     const currentUser = useUserContext()
     const [ value, setValue ] = useState("")
@@ -21,10 +21,14 @@ function Home ({mode, setMode, openHowTo, setOpenHowTo}) {
     const navigate = useNavigate();
     const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
     
-    function submitName(event, error) {
+
+
+
+    function submitName(event ) {
         event.preventDefault()
        
         currentUser.setUserName(value);
+        currentUser.setProfileImg(imgNum)
         setValue("")
         navigate('/game')
     }
@@ -36,6 +40,7 @@ function Home ({mode, setMode, openHowTo, setOpenHowTo}) {
 
     const increaseNum = () => {
         if(imgNum=== 5) {setImgNum(1)
+
         }else {setImgNum(imgNum+1)}}
     const decreaseNum = () => {
         if(imgNum=== 1) {setImgNum(5)
@@ -59,7 +64,13 @@ function Home ({mode, setMode, openHowTo, setOpenHowTo}) {
         <Paper >
             <div className="box">
                 <div className="homeImg">
-                    <img src="guesswho.png"></img>
+                    
+                    <picture>
+                        <source media="(max-width: 799px)" srcset="guesswho_500.png" />
+                        <source media="(min-width: 800px)" srcset="guesswho_800.png" />
+                        <img src="guesswho_800.png" alt='cards from the guess who game' />
+                    </picture>
+
                 </div>
                 <div className="rigth">
                     <div className="mode">
@@ -82,7 +93,7 @@ function Home ({mode, setMode, openHowTo, setOpenHowTo}) {
                             <Button onClick={increaseNum} > <ArrowRightIcon sx={{ color: deepPurple[500] }}></ArrowRightIcon> </Button>
                         </div>
                         <div className="getUserName">
-                            <TextField label="ENTER YOUR NAME" type="text" value={value} onChange={(e)=>setValue(e.target.value)}/>
+                            <TextField required={true} label="ENTER YOUR NAME" type="text" value={value} onChange={(e)=>setValue(e.target.value)}/>
                             
                         </div>
                         <Button variant='contained' color='primary' onClick={submitName}>Play!</Button>

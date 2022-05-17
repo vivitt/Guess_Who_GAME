@@ -1,7 +1,7 @@
 
 const characters = [
     {   
-        "id": 'Al', 
+        "id": 'AL', 
         //hair
         '0041': true,
         //short-hair
@@ -52,7 +52,7 @@ const characters = [
 
     }, 
     {
-        "id": 'Nico', 
+        "id": 'NICO', 
         //hair
         '0041': true,
         //short-hair
@@ -71,7 +71,7 @@ const characters = [
        
     }, 
     {
-        "id": 'Jul', 
+        "id": 'JUL', 
         
         "3041": true,
          //glasses
@@ -93,7 +93,7 @@ const characters = [
 
     }, 
     {
-        "id": 'Oli', 
+        "id": 'OLI', 
         //hair
         '0041': true,
         //short-hair
@@ -116,7 +116,7 @@ const characters = [
 
     },
     {
-        "id": 'Ky', 
+        "id": 'KY', 
         //hair
         '0041': true,
         //short-hair
@@ -141,7 +141,7 @@ const characters = [
     "image": "00_5.png",
     "descr": "person 5"
     }, {
-        "id": 'Lau', 
+        "id": 'LAU', 
         //hair
         '0041': true,
         //short-hair
@@ -164,7 +164,7 @@ const characters = [
     "descr": "person 6"
     }, 
     {
-        "id": 'Jim', 
+        "id": 'JI', 
         //hair
         '0041': true,
         
@@ -186,7 +186,7 @@ const characters = [
     "image": "00_7.png",
     "descr": "person 7"
     }, {
-        "id": 'Mor', 
+        "id": 'MOR', 
         //hair
         '0041': true,
         
@@ -206,7 +206,7 @@ const characters = [
     "image": "00_8.png",
     "descr": "person 8"
     }, {
-        "id": 'Ale', 
+        "id": 'ALE', 
         //hair
         '0041': true,
         
@@ -226,7 +226,7 @@ const characters = [
     "image": "00_9.png",
     "descr": "person 9"
     }, {
-        "id": 'Jai', 
+        "id": 'JAI', 
         //hair
         '0041': true,
         
@@ -248,7 +248,7 @@ const characters = [
     "image": "00_10.png",
     "descr": "person 10"
     }, {
-        "id": 'Kal', 
+        "id": 'KAL', 
         //hair
         '0041': true,
         
@@ -267,7 +267,7 @@ const characters = [
     "image": "00_11.png",
     "descr": "person 11"
     }, {
-        "id": 'Mar', 
+        "id": 'MAR', 
         //hair
         '0041': true,
         
@@ -285,7 +285,7 @@ const characters = [
     "image": "00_12.png",
     "descr": "person 12"
     }, {
-        "id": 'Lis', 
+        "id": 'LIS', 
         //hair
         '0041': true,
         
@@ -299,7 +299,7 @@ const characters = [
     "image": "00_13.png",
     "descr": "person 13"
     }, {
-        "id": 'Val', 
+        "id": 'VALEN', 
         //hair
         '0041': true,
         
@@ -311,7 +311,7 @@ const characters = [
     "image": "00_14.png",
     "descr": "person 14"
     }, {
-        "id": 'Neu', 
+        "id": 'NEU', 
         //hair
         '0041': true,
         
@@ -326,7 +326,7 @@ const characters = [
     "image": "00_15.png",
     "descr": "person 15"
     }, {
-        "id": 'Fer', 
+        "id": 'FER', 
         //hair
          //earrings
          '0044': true,
@@ -337,7 +337,7 @@ const characters = [
     "image": "00_16.png",
     "descr": "person 16"
     }, {
-        "id": 'Mei', 
+        "id": 'MEI', 
         //hair
         '0041': true,
         
@@ -353,7 +353,7 @@ const characters = [
     "image": "00_17.png",
     "descr": "person 17"
     }, {
-        "id": 'Ari', 
+        "id": 'ARI', 
         //hair
         '0041': true,
         
@@ -369,7 +369,7 @@ const characters = [
     "image": "00_18.png",
     "descr": "person 18"
     }, {
-        "id": 'Bo', 
+        "id": 'BO', 
         //hair
         '0041': true,
         
@@ -387,7 +387,7 @@ const characters = [
     "image": "00_19.png",
     "descr": "person 19"
     }, {
-        "id": 'Chun', 
+        "id": 'CHUN', 
         //hair
         '0041': true,
         
@@ -410,7 +410,7 @@ const characters = [
     "image": "00_20.png",
     "descr": "person 20"
     }, {
-        "id": 'Leo', 
+        "id": 'LEO', 
         //hair
         '0041': true,
         
@@ -427,7 +427,7 @@ const characters = [
     "image": "00_21.png",
     "descr": "person 21"
     }, {
-        "id": 'Tin', 
+        "id": 'TIN', 
         //hair
         '0041': true,
         
@@ -443,7 +443,7 @@ const characters = [
     "image": "00_22.png",
     "descr": "person 22"
     }, {
-        "id": 'June', 
+        "id": 'JUN', 
         //hair
         '0041': true,
         
@@ -457,7 +457,7 @@ const characters = [
     "image": "00_23.png",
     "descr": "person 23"
     }, {
-        "id": 'Lou', 
+        "id": 'LOU', 
         //hair
         '0041': true,
         

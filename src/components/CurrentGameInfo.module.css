@@ -1,5 +1,5 @@
 .currentGame {
-    background-color: #A98DB8;
+    border: 2px solid #A98DB8;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@
 .userName {
     
   font-family: 'VT323', monospace;
-  color: whitesmoke;
+  color: #A98DB8;
   font-size: 1.5rem;
     font-size: 2rem;
    

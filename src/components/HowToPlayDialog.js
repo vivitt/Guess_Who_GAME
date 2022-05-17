@@ -2,18 +2,17 @@ import React from "react";
 import Dialog from '@mui/material/Dialog';
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
-
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
 
 
 
-function HowToPlayDialog(){
-  const [open, setOpen] = React.useState(true);
-
+function HowToPlayDialog({open, setOpen}){
   
-  function close() { 
+  function close(e) { 
+    e.preventDefault()
     setOpen(false);
+    console.log('please close')
   }
   return (
     <div >
