@@ -15,9 +15,8 @@ function Home () {
     function submitName(event) {
         event.preventDefault()
         currentUser.setUserName(value);
-       
         setValue("")
-        console.log(userPlay)
+        
     }
     const navHowToPlay = () => navigate('/howtoplay')
     const navGame = () => navigate('/game')

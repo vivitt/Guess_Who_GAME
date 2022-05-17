@@ -67,6 +67,8 @@ export const SelectedCharContextProv = ({ children }) => {
         '2744': false,
         //yellow earrings
         '2844': false,
+        //gray earrings
+        '2944': false,
         //hair accessory
         '0045': false,
         //green hair acc
