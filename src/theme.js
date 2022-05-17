@@ -130,13 +130,15 @@ theme.props = {
       container: {
        
         textAlign: 'center',
+        
        
       }
     
     },
     MuiDialogContent: {
       dividers: {
-        color: theme.palette.primary.main
+        color: theme.palette.primary.main, 
+      
       }
     }, 
 
