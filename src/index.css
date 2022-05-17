@@ -18,7 +18,7 @@ body {
 }
 
 
-.game, .startGame, .howToPlay  {
+.game, .startGame, .howToPlay {
   
   margin-top: 0;
   margin-left: 1rem;
@@ -26,7 +26,7 @@ body {
   padding: 1rem;
   text-align: center;
 }
-.box, .game {
+.box, .game,  .notFound  {
   display: flex;
   flex-flow: row nowrap;
   
@@ -36,8 +36,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-
 
 .homeImg img {
   
@@ -56,8 +54,6 @@ body {
 }
 
 .rigth {
-  
-  
   justify-content: space-between;
   max-width: 100%;
   width: 300px;
@@ -221,4 +217,29 @@ body {
       
     }
     
-   
+.notFound  {
+  
+  border-radius: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  
+  }   
+.notFound .text {
+  text-align: left;
+  margin-left: 1rem;
+}
+.notFound h2 {
+  font-family: 'VT323', monospace;
+  text-shadow: 2px 2px #673BB7;
+  font-size: 8rem;
+  color: #FFFFFF;
+}
+.notFound .back {
+  padding: 2rem;
+  
+}
+.notFoundImg {
+  max-width: 400px;
+  
+}
+

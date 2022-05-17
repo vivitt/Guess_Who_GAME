@@ -8,7 +8,7 @@ import {
 //PAGES
 import Home from './pages/Home'
 import Game from './pages/Game'
-import HowToPlay from './pages/HowToPlay'
+
 import NotFound from './pages/NotFound'
 import Footer from './components/Footer'
 
@@ -24,7 +24,7 @@ import { useState } from 'react';
 
 function App() {
 const [ mode, setMode ] = useState('easy')
-const [ openHowTo, setOpenHowTo ] = useState(false)
+
   
   return (
     <UserContextProv >
@@ -37,13 +37,13 @@ const [ openHowTo, setOpenHowTo ] = useState(false)
           
                <main>
                  <Routes>
-                   <Route path="/" element={<Home mode={mode} setMode={setMode} openHowTo={openHowTo} setOpenHowTo={setOpenHowTo} />} /> 
+                   <Route path="/" element={<Home mode={mode} setMode={setMode}  />} /> 
                    {/* <Route path="/login" element={<Login />} />
                    <Route path="/register" element={<Register />} /> */}
                    
-                   <Route path="/game" element={ <RequireName><Game mode={mode} setMode={setMode} openHowTo={openHowTo} setOpenHowTo={setOpenHowTo} /> </RequireName>} /> 
+                   <Route path="/game" element={ <RequireName><Game mode={mode} setMode={setMode}  /> </RequireName>} /> 
                    
-                   <Route path="/howtoplay" element={ <HowToPlay />  } />
+                   {/* <Route path="/howtoplay" element={ <HowToPlay />  } /> */}
                    <Route path="*" element={<NotFound />} />
                  </Routes>
                </main> 
