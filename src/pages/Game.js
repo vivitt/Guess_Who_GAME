@@ -8,9 +8,15 @@ import { useUserContext } from "../context/UserContextProv"
 import WinnerDialog from '../components/WinnerDialog';
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 import LoserDialog from '../components/LoserDialog';
-
-
-function Game () {
+import { Paper } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/core';
+import theme from '../theme';
+import QuestionInput from "../components/QuestionInput"
+import CurrentGameInfo from "../components/CurrentGameInfo"
+import GuessSection from "../components/GuessSection"
+import Clock from "../components/Clock"
+import HowToPlayDialog from "../components/HowToPlayDialog"
+function Game ({mode, setMode}) {
     // ////DIALOG
     // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
     //USERNAME
@@ -28,7 +34,7 @@ function Game () {
     const [ timeNeeded, setTimeNeeded ] = useState(0)
     const [haveWinner, setHaveWinner ] = useState(false);
     const [ haveLoser, setHaveLoser ] = useState(false)
-    
+
     ////\\\\char to guess
     const charToGuess = useSelectedCharContext()
     ////////////////////////////////////
@@ -36,7 +42,9 @@ function Game () {
         setHaveLoser(false);
         setHaveWinner(false);
         setTries(0)
-
+        setSeconds(0)
+        setQuestCounter(0)
+     
         const len = characters.length;
         const random = characters[Math.floor(Math.random() * len)]
         charToGuess.setSelectedChar({...random})
@@ -51,10 +59,17 @@ function Game () {
             getRandomChar();
            }, [])
     /////////////////////////////////////////////
+
+           ///Get TIME
+           let time = seconds;
+           let mins = Math.floor(time / 60)
+           let secs = time % 60;
+
            /////\\\\\\\ Q & A ////////\\\\\\\
     
     function submitQuest(e) {
         e.preventDefault();
+        if (mode === 'easy' || mode === 'hard' && questCounter < 5) {
         setQuestionStatus('')
         const quest = {firstValue , secondValue}
         if ( secondValue === '') {
@@ -68,8 +83,8 @@ function Game () {
         console.log(quest)
         setFirstValue('00')
         setSecondValue('')
-    }
-    
+    } 
+}
     function getAnswer(quest) {
         //setAnswer('')
         let currentQuest = quest.firstValue + quest.secondValue;
@@ -94,67 +109,55 @@ function Game () {
     const [ tries, setTries ] = useState(0)
     function submitGuess(e) {
         e.preventDefault();
+        if (guess !== '')
         setTries(tries+1)
         setGuess('')
-        if (guess == charToGuess.selectedChar.id) {
+        console.log(guess)
+        console.log(charToGuess.selectedChar.id)
+        if (guess.toUpperCase() === charToGuess.selectedChar.id) {
             setHaveWinner(true);
             console.log('winner')
             console.log(questCounter)
             setTimeNeeded(Math.ceil(seconds/60))
             setSeconds(0)
-        } else if (tries === 2) {
+        } else if (mode ==='easy' && tries === 2) {
             setHaveLoser(true)
-
-            
-        }
+        } else if (mode === 'hard' && tries === 0){
+            setHaveLoser(true)
+        } 
     }
-    
-    return (
-        <div>
-            <h2>Guess who GAME</h2>
-            <h3>{userPlay} is playing</h3>
-            <div className="game-main">
-               {characters.map(char => ( <Char char={char} /> )) }
-            </div>
-            <div className="question">
-                <form>
-                    <span>Does this person have     
-                        <select  value={firstValue} onChange={(e)=>setFirstValue(e.target.value)} >
-                            {Object.keys(firstChoice).map((key) => (<option value={firstChoice[key]}>{key}</option>))}
-                        </select> 
-                        <select  value={secondValue} onChange={(e)=>setSecondValue(e.target.value)} >
-                            {Object.keys(secondChoice).map((key) => (<option value={secondChoice[key]}>{key}</option>))}
-                        </select> 
-                        ? 
-                    </span>
-                    <button onClick={submitQuest}>Send</button>
-                </form>
-            </div>
-            
-            {
-            (questionStatus !== '') &&
-            <div className="answer">
-                <span>
-                    { (questionStatus === 'error') 
-                    ? <p>This is not a valid question... Please try adding a word</p>
-                    : <p>The answer to your last question is: {answer} </p> 
-                    }
-                </span>
-            </div>
-            }
+ 
 
-            <div className="guess">
-                <form>
-                    <input type='text' value={guess} onChange={(e)=>setGuess(e.target.value)}></input>
-                    <button onClick={submitGuess}>Try</button>
-                    <p>You have used {tries}/3 tries</p>
-                </form>
-            </div>
+
+    return (
+        <ThemeProvider theme={theme}>
+            <div className="game">
+                <Paper sx={{backgroundColor: theme.palette.primary.contrastText}} >
+                    <div className="game">
+                        <div className="game-main">
+                            {characters.map(char => ( <Char char={char}  /> )) }
+                        </div>
+
+                        <div className="rigth-game">
+                            <div className="playerArea">
+                                <Clock mins={mins} secs={secs}></Clock>
+                                <CurrentGameInfo userPlay={userPlay} />
+                            </div>
+                            <QuestionInput  firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
+                            <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
+                              
+                            
+                            
+                        </div>
+                    </div>
+                </Paper>
             <div>
-            {(haveWinner === true) && <WinnerDialog time={timeNeeded} questCounter={questCounter} getRandomChar={getRandomChar}  /> }
-            {(haveLoser === true) && <LoserDialog getRandomChar={getRandomChar} />}
+            {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  /> }
+            {(haveLoser === true) && <LoserDialog  getRandomChar={getRandomChar} />}
             </div>
+          
         </div>
+        </ThemeProvider>
     )
 }
 export default Game

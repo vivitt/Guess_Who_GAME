@@ -9,46 +9,34 @@ import { useNavigate } from "react-router-dom";
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 
 function LoserDialog({getRandomChar}){
-    const [open, setOpen] = React.useState(true);
-    const navigate = useNavigate()
-    const charToGuess = useSelectedCharContext()
-    function navGame() { 
-      getRandomChar();
-      setOpen(false);}
-    const navHome = () => navigate('/')
-   
-    const divStyle = {
-      backgroundColor: "red", // camel cased
-      height: "100px",
-      
- }
+  const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate()
+
+  function navGame() { 
+    getRandomChar();
+    setOpen(false);
+     
+    }
   
-    return (
-    <div stlye={divStyle}>
-        
-      
+  const navHome = () => navigate('/')
+    
+  return (
+    <div >
       <Dialog  open={open} >
-        <DialogTitle sx={{ backgroundColor: '#A98DB8'}}>{":( "}</DialogTitle>
-        <DialogContent sx={{ backgroundColor: '#A98DB8'}}>
-          <DialogContentText>
-            
-            <p>Run out of tries</p>
-          </DialogContentText>
-       
+        <DialogTitle >{":( "}</DialogTitle>
+        <DialogContent >
+          <DialogContentText><p>Run out of tries</p></DialogContentText>
         </DialogContent>
         <DialogActions>
-            
-          <Button onClick={navGame} 
-                  color="primary" autoFocus>
+          <Button onClick={navGame} variant="contained" color="primary"  autoFocus>
             Play again
           </Button>
-          <Button onClick={navHome} 
-                  color="primary" autoFocus>
+          <Button onClick={navHome} variant="contained" color="primary" autoFocus>
             Back to homepage
           </Button>
         </DialogActions>
       </Dialog>
-      </div>
+    </div>
   );
 }
     

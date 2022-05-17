@@ -1,41 +1,33 @@
+
+
+.card {
+  
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem 0.2rem
+}
+.card p {
+  color: #673BB7;
+}
+.charCard {
+  
+  background-color: transparent;
+  appearance: none;
+  outline: none;
+}
 .charImg {
-    width: 150px;
-    z-index: 10;
+  max-width: 100px;
+  z-index: 10;
+  
+ }
+
+
+ @media (max-width: 399px) {
+  .charImg {
+    max-width: 70px;
+    
     
    }
-
-
-   .box {
-    background-color: transparent;
-    width: 220px;
-    height: 300px;
-    border: 1px solid #eeeeee;
-    perspective: 1000px;
-  }
-  .boxinner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.4s;
-    transform-style: preserve-3d;
-  }
-  /* .box:hover .boxinner {
-    transform: rotateX(180deg);
-  } */
-  .boxfront,
-  .boxback {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-  .boxfront {
-    background-color: #cccccc;
-    color: #111111;
-  }
-  .boxback {
-    background-color: #8ebf42;
-    color: #eeeeee;
-    transform: rotateX(180deg);
-  }
+  
+ }

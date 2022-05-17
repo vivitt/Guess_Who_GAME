@@ -6,10 +6,11 @@ export const UserContextProv = ({ children }) => {
 
     //User
     const [userName, setUserName] = useState("");
-    console.log(userName)
+    const [profileImg, setProfileImg] = useState("1")
+    
   
     return (
-      <UserContext.Provider value={{userName, setUserName}} >
+      <UserContext.Provider value={{userName, setUserName, profileImg, setProfileImg}} >
         {children}
       </UserContext.Provider>
     );
