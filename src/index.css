@@ -1,6 +1,11 @@
-@use "@material/dialog";
-
-@include dialog.core-styles;
+/* --------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 
 body {
   margin: 0;
@@ -12,13 +17,162 @@ body {
   background-color: #A98DB8;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.game, .startGame, .howToPlay  {
+  
+  margin-top: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  text-align: center;
 }
+.box, .game {
+  display: flex;
+  flex-flow: row nowrap;
+  
+}
+
+
+.homeImg img {
+  width: 100%;
+  max-width: 700px;
+  opacity: 10;
+}
+.rigth, .rigth-game {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  background-color: #FFFFFF;
+  padding: 1rem 0 2rem 0;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.rigth {
+  
+  
+  justify-content: space-between;
+  max-width: 100%;
+  width: 300px;
+}
+.rigth-game {
+  justify-content: flex-start;
+  max-width: 100%;
+  width: 250px;
+}
+
+.instrucctions  {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  justify-content: space-between;
+  padding: 1rem 0 2rem 0;
+}
+.rigth h2, .instrucctions h2{
+  font-family: 'VT323', monospace;
+  color: #673BB7;
+}
+.instrucctions h2 {
+  font-size: 2rem;
+}
+
+.modeInfo {
+  background-color: #A98DB8;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin: 1rem;
+  text-transform: uppercase;
+  
+  
+}
+
+.playerSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.playerSettings h2 {
+  font-family: 'VT323', monospace;
+  color: #E91E63;
+  
+}
+.getUserImg {
+  display: flex;
+  flex-direction: row nowrap;
+}
+
+.profileImg {
+  border-radius: 50%;
+  height: 100px;
+  width: auto;
+  
+  
+}
+.getUserName {
+  margin: 0.5rem;
+}
+
+/*_________________________________GAME */
+
+
+.inputGame {
+  display: flex;
+  flex-direction: column;
+}
+
+.playerArea {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.clock {
+  font-family: 'VT323', monospace;
+  color: whitesmoke;
+  font-size: 2rem;
+  
+  width: 80px;
+  background-color: #A98DB8;
+  padding: 0.2rem;
+  border-radius: 10px;
+  margin: 1rem;
+  display: inline-block;
+  
+  
+}
+
+.title {
+  font-size: 3rem;
+  display: inline;
+}
+
 .game-main {
   display: flex;
   flex-flow: row wrap;
+  max-width: 900px;
+  width: 100%;
+  margin: 1rem;
+  background-color: #A98DB8;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  padding: 1rem 0.2rem 1rem 0.2rem;  
+  
+}
+
+.currentGame {
+  background-color: #A98DB8;
+  display: inline;
 }
 
 
+.discard img {
+   opacity: 15%;
+    z-index: 30;
+    filter: hue-rotate(30deg);
+  } 
+  .discard p {
+    opacity: 15%;
+  
+   } 

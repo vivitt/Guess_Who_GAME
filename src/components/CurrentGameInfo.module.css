@@ -1,0 +1,29 @@
+.currentGame {
+    background-color: #A98DB8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 1rem;
+    
+    margin: 1rem;
+    max-width: 300px ;
+  }
+.userName {
+    
+  font-family: 'VT323', monospace;
+  color: whitesmoke;
+  font-size: 1.5rem;
+    font-size: 2rem;
+   
+}
+.quest {
+  /* font-family: 'VT323', monospace; */
+  color: #673BB7;
+  font-size: 1.5rem;
+  background-color: #B2DFDB;
+  padding: 0.3rem;
+  border-radius: 5px;
+   
+}

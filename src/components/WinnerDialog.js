@@ -1,5 +1,5 @@
 import React from "react";
-import Dialog from "@material-ui/core/Dialog";
+import { Dialog } from "@material-ui/core";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -14,21 +14,20 @@ function WinnerDialog({time, questCounter, getRandomChar}){
     const charToGuess = useSelectedCharContext()
     function navGame() { 
       getRandomChar();
-      setOpen(false);}
+      setOpen(false);
+  
+    
+    
+    }
     
     const navHome = () => navigate('/')
  
-    const divStyle = {
-      backgroundColor: "red", // camel cased
-      height: "100px",
-      
- }
-  
+
     return (
-    <div stlye={divStyle}>
+    <div>
         
       
-      <Dialog  style={{ color: 'pink'}} open={open} >
+      <Dialog  open={open} >
         <DialogTitle>{"Yeah!! You Win!!!!"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -40,11 +39,11 @@ function WinnerDialog({time, questCounter, getRandomChar}){
         <DialogActions>
             
           <Button onClick={navGame} 
-                  color="primary" autoFocus>
+                  variant="contained" color="primary" autoFocus>
             Play again
           </Button>
           <Button onClick={navHome} 
-                  color="primary" autoFocus>
+                 variant="contained" color="primary" autoFocus>
             Back to homepage
           </Button>
         </DialogActions>

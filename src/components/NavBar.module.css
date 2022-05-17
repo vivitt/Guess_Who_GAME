@@ -1,0 +1,45 @@
+.navBar {
+ 
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row nowrap;
+    padding: 1rem;
+    
+   
+ 
+ 
+
+}
+.navBar h3 {
+    font-family: 'VT323', monospace;
+    color: whitesmoke;
+    font-size: 5rem;
+    margin: 0;
+    text-shadow: 2px 2px #E91E63;
+    padding-right: 8rem;
+}
+.navBar ul {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+   
+   
+ 
+}
+
+.navBar  ul li {
+    color: #E91E63;
+    padding: 0;
+    margin: 0;
+ 
+}
+.navBar  ul li NavLink {
+    color: #E91E63;
+    padding: 0;
+    margin: 0;
+
+}

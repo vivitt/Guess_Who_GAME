@@ -1,0 +1,24 @@
+.guess {
+    background-color: #B2DFDB;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+   
+    margin-top: 0;
+}
+
+.guess h3 {
+    font-family: 'VT323', monospace;
+   
+    font-size: 2rem;
+    padding-bottom: 1rem;
+  }
+
+.guess h4 {
+    font-family: 'VT323', monospace;
+    color: whitesmoke;
+    font-size: 1.5rem;
+}

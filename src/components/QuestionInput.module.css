@@ -1,0 +1,50 @@
+.questSection {
+    /* background-color: #7FCDC3; */
+    display: flex;
+    flex-direction: column;
+   
+    margin-top: 0;
+}
+
+.question, .answer {
+    background-color: #A98DB8;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 1rem;
+   
+}
+.input {
+    margin-top: 1rem;
+}
+.title {
+  font-family: 'VT323', monospace;
+  color: whitesmoke;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+.text {
+    text-transform: uppercase;
+    color: #B2DFDB;
+}
+
+.questMark {
+    font-family: 'VT323', monospace;
+    color: whitesmoke; 
+    font-size: 2rem;
+}
+
+.questQuant p {
+    font-family: 'VT323', monospace;
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+
+.answer {
+    color: #B2DFDB;
+}
+.yOrN {
+    font-family: 'VT323', monospace;
+    color: whitesmoke; 
+    font-size: 2rem;
+}
