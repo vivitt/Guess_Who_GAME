@@ -1,6 +1,7 @@
 import style from './CurrentGameInfo.module.css'
 import { Avatar } from '@mui/material';
 import { useUserContext } from '../context/UserContextProv';
+
 function CurrentGameInfo ({userPlay}) {
     const currentUser = useUserContext()
     const userImg = currentUser.profileImg

@@ -8,6 +8,7 @@ import { style } from '@mui/system'
 function QuestionInput ({questionStatus, firstValue, setFirstValue, firstChoice, secondValue, setSecondValue, secondChoice, submitQuest, answer, mode, questCounter}) {
     return (
         <div className={styles.questSection}>
+                    
             <div className={styles.question}>
                 <span className={styles.title}>Ask a QUESTION</span>
                 <form>
@@ -22,22 +23,20 @@ function QuestionInput ({questionStatus, firstValue, setFirstValue, firstChoice,
                         {Object.keys(secondChoice).map((key) => (<MenuItem value={secondChoice[key]}>{key}</MenuItem>))}
                         </Select> 
                     </div>
-                    <p className={styles.questMark}>
+                   
+                    <Button variant="contained" color="primary" onClick={submitQuest}>Ask <span className={styles.questMark}>
                     ? 
-                    </p>
-                    <Button variant="contained" color="primary" onClick={submitQuest}>Ask</Button>
+                    </span></Button>
                 </form>
                 <div className={styles.questQuant}>
                     {(mode === 'easy') && <p>{questCounter}/∞</p>}
                     {(mode === 'hard') && <p>{questCounter}/5</p>}
                 </div>
                 {
-                    (questCounter === 5) && <div>You can not ask more questions</div>
+                    (mode === 'hard' && questCounter === 5) && <div>You can not ask more questions</div>
                 }
-            </div>
+                 {
 
-
-        {
 (questionStatus !== '') &&
 <div className={styles.answer}>
 <span>
@@ -48,6 +47,10 @@ function QuestionInput ({questionStatus, firstValue, setFirstValue, firstChoice,
 </span>
 </div>
 }
+            </div>
+           
+
+
 </div>
     )
 }

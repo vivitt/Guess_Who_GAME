@@ -154,13 +154,13 @@ body {
 .game-main {
   display: flex;
   flex-flow: row wrap;
-  max-width: 900px;
-  width: 100%;
+  align-items: center;
+  max-width: 100%;
   margin: 1rem;
-  background-color: #A98DB8;
-  border-radius: 10px;
+  /* background-color: #A98DB8; */
+  /* border-radius: 10px; */
   justify-content: space-evenly;
-  padding: 1rem 0.2rem 1rem 0.2rem;  
+  padding: 0;  
   
 }
 
@@ -191,28 +191,10 @@ body {
       
     }
 
-    .game-main {
-      order: 2;
-      max-width: 100%;
-    }
-    .rigth-game {
-      
-      flex-direction: row;
-      flex-wrap: wrap;
-      
-      
-      align-items: flex-start;
-      max-width: 100%;
-      justify-content: flex-end;
-      
-     
-      
-    }
  
-    .playerArea {
-      order: 1;
-      
-    }
+ 
+ 
+ 
   
       
     }

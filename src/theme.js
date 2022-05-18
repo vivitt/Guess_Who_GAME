@@ -99,6 +99,7 @@ theme.props = {
             display: 'inline-block',
             
             
+            
         }, 
         rounded: {
           borderRadius: 30,
@@ -108,6 +109,15 @@ theme.props = {
      
       
     }, 
+    MuiSwipeableDrawer: {
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+      }
+    },
     MuiTextField: {
       root: {
         backgroundColor: theme.palette.primary.input,

@@ -2,8 +2,10 @@
     /* background-color: #7FCDC3; */
     display: flex;
     flex-direction: column;
-   
+    justify-content: center;
+    align-items: center;
     margin-top: 0;
+    
 }
 
 .question, .answer {
@@ -12,16 +14,23 @@
     border-radius: 20px;
     padding: 1rem;
     margin: 1rem;
+
+   
    
 }
+
+
 .input {
-    margin-top: 1rem;
+   margin:  1rem 0 ;
+    
+    
 }
 .title {
   font-family: 'VT323', monospace;
   color: whitesmoke;
   font-size: 2rem;
   padding-bottom: 1rem;
+  
 }
 .text {
     text-transform: uppercase;
@@ -41,10 +50,10 @@
 }
 
 .answer {
-    color: #B2DFDB;
+color: red;
 }
 .yOrN {
     font-family: 'VT323', monospace;
-    color: whitesmoke; 
+    color: red; 
     font-size: 2rem;
 }
