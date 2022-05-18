@@ -7,15 +7,13 @@ import Paper from "@mui/material/Paper";
 import { deepPurple } from "@mui/material/colors";
 
 
-
-
 function CharDialog({char, open, setOpen}){
   
   const imgPath = char.image; 
-  
   function close() { 
     setOpen(false);
   }
+  
   return (
     <div >
       <Dialog open={open} >
@@ -33,8 +31,4 @@ function CharDialog({char, open, setOpen}){
     </div>
   );
 }
-    
-    
-   
-
 export default CharDialog

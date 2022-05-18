@@ -152,7 +152,7 @@ function Game ({mode, setMode}) {
                     </div>
                 </Paper>
             <div>
-            {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  /> }
+            {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  questCounter={questCounter}/> }
             {(haveLoser === true) && <LoserDialog  getRandomChar={getRandomChar} />}
             </div>
           

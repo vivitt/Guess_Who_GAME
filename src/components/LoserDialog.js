@@ -6,7 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"; 
-import { useSelectedCharContext } from "../context/SelectedCharContx";
 
 function LoserDialog({getRandomChar}){
   const [open, setOpen] = React.useState(true);
@@ -15,8 +14,7 @@ function LoserDialog({getRandomChar}){
   function navGame() { 
     getRandomChar();
     setOpen(false);
-     
-    }
+  }
   
   const navHome = () => navigate('/')
     
