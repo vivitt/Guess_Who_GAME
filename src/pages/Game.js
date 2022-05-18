@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect, useState } from "react"
 import characters from "../characters"
 import Char  from  "../components/Char"
@@ -16,6 +17,8 @@ import CurrentGameInfo from "../components/CurrentGameInfo"
 import GuessSection from "../components/GuessSection"
 import Clock from "../components/Clock"
 import HowToPlayDialog from "../components/HowToPlayDialog"
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Button from '@mui/material/Button';
 function Game ({mode, setMode}) {
     // ////DIALOG
     // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
@@ -127,36 +130,87 @@ function Game ({mode, setMode}) {
         } 
     }
  
+///////////////////DRAWER
+
+const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+    console.log(state)
+  };
 
 
+
+  ////////////////////////////////////
     return (
         <ThemeProvider theme={theme}>
-            <div className="game">
-                <Paper sx={{backgroundColor: theme.palette.primary.contrastText}} >
-                    <div className="game">
-                        <div className="game-main">
-                            {characters.map(char => ( <Char char={char}  /> )) }
-                        </div>
-
-                        <div className="rigth-game">
-                            <div className="playerArea">
-                                <Clock mins={mins} secs={secs}></Clock>
-                                <CurrentGameInfo userPlay={userPlay} />
-                            </div>
-                            <QuestionInput  firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
-                            <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
-                              
+            
+            <Paper sx={{backgroundColor: theme.palette.primary.contrastText}} >
+            <div className='game'>
+            <div className="game-main"> { characters.map(char => ( <Char char={char}  /> )) } </div>
+               
+                    
+                        {['left', 'right'].map((anchor) => (
+                        <React.Fragment key={anchor}>
+                            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                           
+                            
+                          
+                            
+                            <SwipeableDrawer
+                                anchor={anchor}
+                                open={state[anchor]}
+                                onClose={toggleDrawer(anchor, false)}
+                                onOpen={toggleDrawer(anchor, true)}
+                                >
+                                <div className="rigth-game">
+                                    <div className="playerArea">
+                                    <Clock mins={mins} secs={secs}></Clock>
+                                    <CurrentGameInfo userPlay={userPlay} />
+                                    </div>
+                                    <QuestionInput  firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
+                                </div>
+                            </SwipeableDrawer>
+                          
                             
                             
-                        </div>
+                            <SwipeableDrawer
+                                anchor={anchor}
+                                open={state[anchor]}
+                                onClose={toggleDrawer(anchor, false)}
+                                onOpen={toggleDrawer(anchor, true)}
+                                >
+                                  <div className="playerArea">
+                                    <Clock mins={mins} secs={secs}></Clock>
+                                    <CurrentGameInfo userPlay={userPlay} />
+                                    </div>
+                                <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
+                            </SwipeableDrawer> 
+                            
+                            </React.Fragment>
+                            ))}
+                    
                     </div>
                 </Paper>
             <div>
             {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  questCounter={questCounter}/> }
             {(haveLoser === true) && <LoserDialog  getRandomChar={getRandomChar} />}
-            </div>
-          
-        </div>
+            
+          </div>
+        
         </ThemeProvider>
     )
 }
