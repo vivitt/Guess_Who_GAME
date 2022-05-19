@@ -2,9 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from "react"
 import characters from "../characters"
 import Char  from  "../components/Char"
-// import Select from "../components/Select"
 import { firstChoice, secondChoice } from "../QuestOptions"
-// import GetAnswer from '../GetAnswer'
 import { useUserContext } from "../context/UserContextProv"
 import WinnerDialog from '../components/WinnerDialog';
 import { useSelectedCharContext } from "../context/SelectedCharContx";
@@ -16,9 +14,12 @@ import QuestionInput from "../components/QuestionInput"
 import CurrentGameInfo from "../components/CurrentGameInfo"
 import GuessSection from "../components/GuessSection"
 import Clock from "../components/Clock"
-import HowToPlayDialog from "../components/HowToPlayDialog"
+import TryAgain from '../components/TryAgain';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
+import { Button } from "@material-ui/core";
+import FaceIcon from '@mui/icons-material/Face';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+
 function Game ({mode, setMode}) {
     // ////DIALOG
     // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
@@ -28,7 +29,7 @@ function Game ({mode, setMode}) {
     const [seconds, setSeconds] = useState(0);
     
     ////////////////////////////////////
-    const [ currentChars, setCurrentChars ] = useState([])
+    
     const [ firstValue, setFirstValue ] = useState('')
     const [ secondValue, setSecondValue ] = useState('')
     const [ questionStatus, setQuestionStatus ] = useState('')
@@ -37,7 +38,8 @@ function Game ({mode, setMode}) {
     const [ timeNeeded, setTimeNeeded ] = useState(0)
     const [haveWinner, setHaveWinner ] = useState(false);
     const [ haveLoser, setHaveLoser ] = useState(false)
-
+    const [openTryDialog, setOpenTryDialog] = React.useState(true);
+    const [ allCharClass, setAllCharClass ] = useState('');
     ////\\\\char to guess
     const charToGuess = useSelectedCharContext()
     ////////////////////////////////////
@@ -47,11 +49,13 @@ function Game ({mode, setMode}) {
         setTries(0)
         setSeconds(0)
         setQuestCounter(0)
-     
+        setAllCharClass('')
+        toggleDrawer('right', false)
+        toggleDrawer('left', false)
         const len = characters.length;
         const random = characters[Math.floor(Math.random() * len)]
         charToGuess.setSelectedChar({...random})
-        //console.log(selectedChar)
+       
         let interval = null;
         interval = setInterval(() => {
             setSeconds(seconds => seconds + 1);
@@ -82,8 +86,7 @@ function Game ({mode, setMode}) {
             getAnswer(quest)
             setQuestCounter(questCounter+1)
         }
-        // console.log(questionStatus)
-        console.log(quest)
+   
         setFirstValue('00')
         setSecondValue('')
         
@@ -91,17 +94,15 @@ function Game ({mode, setMode}) {
     
 }
     function getAnswer(quest) {
-        //setAnswer('')
+      
         let currentQuest = quest.firstValue + quest.secondValue;
-        // console.log('1', selectedChar.id)
-        console.log(currentQuest)
         let check = (Object.keys(charToGuess.selectedChar).find((key) => key === currentQuest))
         if (charToGuess.selectedChar[check] == true) {
-            //console.log(selectedChar[check])
+            
             setAnswer('Yes')
         } else {
             setAnswer('No')
-                //console.log('3', selectedChar.id)
+                
         }
  
     
@@ -112,26 +113,37 @@ function Game ({mode, setMode}) {
 
     const [ guess, setGuess ] = useState('')
     const [ tries, setTries ] = useState(0)
+    const [ tryAgain, setTryAgain ] = useState(false)
+    const [ oneTry, setOneTry ] = useState('')
     function submitGuess(e) {
         e.preventDefault();
+        setTryAgain(false)
+        setOpenTryDialog(true)
         if (guess !== '')
-        setTries(tries+1)
-        setGuess('')
-        console.log(guess)
-        console.log(charToGuess.selectedChar.id)
-        if (guess.toUpperCase() === charToGuess.selectedChar.id) {
-            setHaveWinner(true);
-            console.log('winner')
-            console.log(questCounter)
-            setTimeNeeded(Math.ceil(seconds/60))
-            setSeconds(0)
-        } else if (mode ==='easy' && tries === 2) {
-            setHaveLoser(true)
-        } else if (mode === 'hard' && tries === 0){
-            setHaveLoser(true)
+            setTries(tries+1)
+            setOneTry(guess)
+            setGuess('')
+            toggleDrawerOnDialog('right', false)
+            console.log(oneTry)
+            console.log(charToGuess.selectedChar.id)
+            if (guess.toUpperCase() !== charToGuess.selectedChar.id) {
+                if (mode ==='easy' && tries === 2) {
+                setHaveLoser(true)
+            } else if (mode === 'hard' && tries === 0){
+                setHaveLoser(true)
+            } else {
+            setTryAgain(true)
         } 
     }
- 
+        else { 
+       
+            setHaveWinner(true);
+            setTimeNeeded(Math.ceil(seconds/60))
+            setSeconds(0)
+        } 
+   
+    }
+    // (guess.toUpperCase() !== charToGuess.selectedChar.id) 
 ///////////////////DRAWER
 
 const [state, setState] = React.useState({
@@ -151,66 +163,60 @@ const [state, setState] = React.useState({
     }
 
     setState({ ...state, [anchor]: open });
-    console.log(state)
+    
   };
 
+const toggleDrawerOnDialog = (anchor, close) => {
+setState({ ...state, [anchor]: close });
+}
 
 
   ////////////////////////////////////
     return (
-        <ThemeProvider theme={theme}>
-            <div className='game'>
-            <Paper sx={{backgroundColor: theme.palette.primary.contrastText}} >
-            <React.Fragment >
-            <Button onClick={toggleDrawer('left', true)}>ASK</Button>
-                <Button onClick={toggleDrawer('right', true)}>GUESS</Button>
-            <div className="game-main"> { characters.map(char => ( <Char char={char}  /> )) } </div>
-
-                    <SwipeableDrawer
-                                anchor="right"
-                                open={state['right']}
-                                onClose={toggleDrawer('right', false)}
-                                onOpen={toggleDrawer('right', true)}
-                                >
-                                             <div className="playerArea">
-                                    <Clock mins={mins} secs={secs}></Clock>
-                                    <CurrentGameInfo userPlay={userPlay} />
-                                    </div>
-                                <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
-                              
-                            </SwipeableDrawer>
-                          
-                            
-                            
-                            <SwipeableDrawer
-                                anchor="left"
-                                open={state['left']}
-                                onClose={toggleDrawer('left', false)}
-                                onOpen={toggleDrawer('left', true)}
-                                >
-                                  <div className="rigth-game">
-                                    <div className="playerArea">
-                                    <Clock mins={mins} secs={secs}></Clock>
-                                    <CurrentGameInfo userPlay={userPlay} />
-                                    </div>
-                                    <QuestionInput  firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
-                                </div>
-                         
-                            </SwipeableDrawer> 
-                            
-                            </React.Fragment>
-                            
-                    
-                  
-                </Paper>
+    
+    <ThemeProvider theme={theme}>
+    <div className='game'>
+         <Paper sx={{backgroundColor: theme.palette.primary.contrastText}} >
+        <React.Fragment >
+            <div className='gameBtns'>
+            <Button variant='contained' color='secondary' onClick={toggleDrawer('left', true)}>
+                <QuestionMarkIcon></QuestionMarkIcon> ASK a question</Button>
+            <Button variant='contained' color='secondary' onClick={toggleDrawer('right', true)}>
+            try to GUESS<FaceIcon></FaceIcon>  </Button>
+            </div>
+            <div className="game-main"> { characters.map(char => ( <Char allCharClass={allCharClass} setAllCharClass={setAllCharClass} char={char}  /> )) } </div>
+            
+            <SwipeableDrawer anchor="right" open={state['right']} onClose={toggleDrawer('right', false)}onOpen={toggleDrawer('right', true)}>
+            
+                <div className="playerArea">
+                    <Clock mins={mins} secs={secs}></Clock>
+                    <CurrentGameInfo userPlay={userPlay} />
                 </div>
-            <div>
+                    <GuessSection guess={guess} setGuess={setGuess} submitGuess={submitGuess} tries={tries} mode={mode} />
+            </SwipeableDrawer>
+                          
+            <SwipeableDrawer anchor="left" open={state['left']} onClose={toggleDrawer('left', false)} onOpen={toggleDrawer('left', true)} >
+            <div className="rigth-game">
+                <div className="playerArea">
+                    <Clock mins={mins} secs={secs}></Clock>
+                    <CurrentGameInfo userPlay={userPlay} />
+                </div>
+                    <QuestionInput  firstValue={firstValue} setFirstValue={setFirstValue} secondValue={secondValue} setSecondValue={setSecondValue} firstChoice={firstChoice} secondChoice={secondChoice} submitQuest={submitQuest} answer={answer} questionStatus={questionStatus} questCounter={questCounter} mode={mode} />
+            </div>
+                         
+            </SwipeableDrawer> 
+                            
+        </React.Fragment>
+        </Paper>
+    </div>
+        <div>
+            {(tryAgain === true) && <TryAgain oneTry={oneTry} openTryDialog={openTryDialog} setOpenTryDialog={setOpenTryDialog} />}
             {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  questCounter={questCounter}/> }
             {(haveLoser === true) && <LoserDialog  getRandomChar={getRandomChar} />}
             
           </div>
         
-        </ThemeProvider>
+    </ThemeProvider>
     )
 }
 export default Game

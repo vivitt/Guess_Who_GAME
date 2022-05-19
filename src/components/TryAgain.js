@@ -5,39 +5,30 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
-import { useNavigate } from "react-router-dom"; 
 
-function LoserDialog({getRandomChar}){
-  const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate()
 
-  function navGame() { 
-    getRandomChar();
-    setOpen(false);
-  }
+function TryAgain({oneTry, openTryDialog, setOpenTryDialog}){
   
-  const navHome = () => {navigate('/')
-  setOpen(false);
-}
-    
+  
+  function navGame() { 
+    setOpenTryDialog(false);
+  }
   return (
     <div >
-       
-      <Dialog  open={open}  disableEnforceFocus >
-        <DialogTitle >{":( "}</DialogTitle>
+      <Dialog  open={openTryDialog} disableEnforceFocus>
+        <DialogTitle >{"No :("}</DialogTitle>
         <DialogContent >
-          <DialogContentText><p>Run out of tries</p></DialogContentText>
+          <DialogContentText>
+          <p>It is not {oneTry.toUpperCase()}</p> 
+          
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={navGame} variant="contained" color="primary"  autoFocus>
-            Play again
-          </Button>
-          <Button onClick={navHome} variant="contained" color="primary" autoFocus>
-            Back to homepage
+            Continue
           </Button>
         </DialogActions>
       </Dialog>
-    
     </div>
   );
 }
@@ -45,4 +36,4 @@ function LoserDialog({getRandomChar}){
     
    
 
-export default LoserDialog
+export default TryAgain

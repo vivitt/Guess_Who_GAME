@@ -1,4 +1,4 @@
-.questSection {
+.questSection .question, .questSection .question form {
     /* background-color: #7FCDC3; */
     display: flex;
     flex-direction: column;
@@ -10,20 +10,13 @@
 
 .question, .answer {
     background-color: #A98DB8;
-    display: inline-block;
+    
     border-radius: 20px;
     padding: 1rem;
     margin: 1rem;
-
-   
-   
 }
-
-
 .input {
    margin:  1rem 0 ;
-    
-    
 }
 .title {
   font-family: 'VT323', monospace;
@@ -33,8 +26,10 @@
   
 }
 .text {
+    font-family: 'VT323', monospace;
     text-transform: uppercase;
     color: #B2DFDB;
+    font-size: 1.3rem;
 }
 
 .questMark {

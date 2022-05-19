@@ -6,13 +6,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Button } from '@material-ui/core'
 import { deepPurple } from "@material-ui/core/colors";
 
-function Char({char}) {
+function Char({char, allCharClass}) {
     const imgPath = char.image;
-    const [ charBtnClass, setCharBtnClass ] = useState('')
+    const [ charBtnClass, setCharBtnClass ] = useState(allCharClass)
     const [open, setOpen] = React.useState(false);
 
     function toggleClass() { 
-        console.log(charBtnClass)
+        console.log('char class:' + charBtnClass)
+        console.log('outer class:' + allCharClass)
         if (charBtnClass === '') 
         {setCharBtnClass('discard')} 
         else { setCharBtnClass('')}

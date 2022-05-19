@@ -163,7 +163,13 @@ body {
   padding: 0;  
   
 }
-
+.gameBtns {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 1rem;
+}
 .currentGame {
   background-color: #A98DB8;
   display: inline;
