@@ -4,11 +4,6 @@
     justify-content: flex-end;
     flex-flow: row nowrap;
     padding: 1rem;
-    
-   
- 
- 
-
 }
 .navBar h3 {
     font-family: 'VT323', monospace;
@@ -26,9 +21,6 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-   
-   
- 
 }
 
 .navBar  ul li {

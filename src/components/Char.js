@@ -4,24 +4,20 @@ import { useState } from 'react';
 import CharDialog from './CharDialog';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Button } from '@material-ui/core'
-import { Icon } from '@mui/material';
 import { deepPurple } from "@material-ui/core/colors";
 
-function Char({char}) {
+function Char({char, allCharClass}) {
     const imgPath = char.image;
-    const [ charBtnClass, setCharBtnClass ] = useState('')
-    
+    const [ charBtnClass, setCharBtnClass ] = useState(allCharClass)
+    const [open, setOpen] = React.useState(false);
+
     function toggleClass() { 
-        console.log(charBtnClass)
+        console.log('char class:' + charBtnClass)
+        console.log('outer class:' + allCharClass)
         if (charBtnClass === '') 
         {setCharBtnClass('discard')} 
         else { setCharBtnClass('')}
-
     }
-    //const [ openChar, setOpenChar] = useState(false);
-    
-    const [open, setOpen] = React.useState(false);
-     
     return (
         <div className={style.card} >
             <a onClick={toggleClass} className={charBtnClass}>
@@ -29,18 +25,12 @@ function Char({char}) {
                 <p>{char.id}</p>
             </a>
                 <Button onClick= {() => (setOpen(true) )}> <VisibilityIcon sx={{ color: deepPurple[500] }}></VisibilityIcon> </Button>  
-                {/* <Button > <CloseIcon></CloseIcon> </Button>   */}
-            
                 {
                     (open === true) && <CharDialog open={open} setOpen={setOpen} char={char} />
                 }
              
              
         </div>
-      
-  
-     
-       
     )
 }
 

@@ -50,7 +50,7 @@ theme.props = {
     MuiButton: {
   
       root: {
-  
+        fontFamily: 'VT323',
         borderRadius: 10, // square corners
         //backgroundColor: theme.palette.secondary.main,
         textTransform: 'none', // removes uppercase transformation
@@ -60,7 +60,7 @@ theme.props = {
         backgroundColor: theme.palette.secondary.main,
         //fontWeight: 700, // makes text bold
         textTransform: 'uppercase',
-        fontFamily: 'VT323',
+       
         fontSize: '1.5rem', 
         color: theme.palette.primary.main,
         '&:hover': { // changes colors for hover state
@@ -77,7 +77,7 @@ theme.props = {
         backgroundColor: theme.palette.secondary.backgroundColor,
         //fontWeight: 700, // makes text bold
         //textTransform: 'uppercase',
-        fontFamily: 'VT323',
+        
         fontSize: '1.2rem', 
         color: theme.palette.primary.accent,
         padding: '0.2rem',
@@ -90,13 +90,16 @@ theme.props = {
   
             },
   
-        }
+        }, 
+        
+        
     }, 
     MuiPaper: {
         root: {
             
             color: theme.palette.secondary.contrastText,
             display: 'inline-block',
+            
             
             
         }, 
@@ -108,9 +111,18 @@ theme.props = {
      
       
     }, 
+    MuiSwipeableDrawer: {
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+      }
+    },
     MuiTextField: {
       root: {
-        backgroundColor: theme.palette.primary.input,
+        backgroundColor: theme.palette.secondary.backgroundColor,
         borderRadius: 8,
         padding: 1,
         margin: 3

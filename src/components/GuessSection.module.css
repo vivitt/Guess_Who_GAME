@@ -1,18 +1,19 @@
-.guess {
+.guess, .guess form{
     background-color: #B2DFDB;
-    display: inline-block;
+    
     border-radius: 20px;
     padding: 1rem;
     margin: 1rem;
     display: flex;
     flex-direction: column;
-   
+    justify-content: center;
+    align-items: center;
     margin-top: 0;
 }
 
 .guess h3 {
     font-family: 'VT323', monospace;
-   
+    color: whitesmoke;
     font-size: 2rem;
     padding-bottom: 1rem;
   }

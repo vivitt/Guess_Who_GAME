@@ -12,19 +12,18 @@ import HowToPlayDialog from "./HowToPlayDialog";
 
 function NavBar() {
     const currentUser = useUserContext()
-    
     const [open, setOpen] = React.useState(false);
     
     function deleteCurrentUser() {
         currentUser.setUserName('')
     }
+    
     function openHandler(e) {
         e.preventDefault()
         setOpen(true)
-        console.log('click')
     }
+    
     return (
-        
         <div className={style.navBar}>
             <h3>GuessWho Game</h3>
             <ul>
@@ -33,31 +32,20 @@ function NavBar() {
                 </li>
                 
                 <li>
-                 <Button onClick={openHandler}><QuestionMarkIcon sx={{ color: pink[500], textShadow: grey[100] }} /></Button>
+                    <Button onClick={openHandler}><QuestionMarkIcon sx={{ color: pink[500], textShadow: grey[100] }} /></Button>
                 </li>
-                
-                
-                
-                
-                {/* <li>
-                 <Button><NavLink to="/howtoplay" title="How to play"><QuestionMarkIcon sx={{ color: pink[500], textShadow: grey[100] }} /></NavLink></Button>
-                </li> */}
-                    {
-                (currentUser.userName) &&
-                    <li>
-                 <Button> <NavLink to="/" title="EXIT" onClick={deleteCurrentUser}><ExitToAppIcon sx={{ color: pink[500] }} /> </NavLink></Button>
+                {                        (currentUser.userName) &&
+                <li>
+                    <Button> <NavLink to="/" title="EXIT" onClick={deleteCurrentUser}><ExitToAppIcon sx={{ color: pink[500] }} /> </NavLink></Button>
                 </li>
-             }
+                }
           
             
-             </ul>
+            </ul>
 
-             <div>
+            <div>
             {(open === true) && <HowToPlayDialog  open={open} setOpen={setOpen} /> }
-            
             </div>
-
-
         </div>
        
     )

@@ -9,35 +9,27 @@ import { useNavigate } from "react-router-dom";
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 
 function WinnerDialog({time, questCounter, getRandomChar}){
-    const [open, setOpen] = React.useState(true);
-    const navigate = useNavigate()
-    const charToGuess = useSelectedCharContext()
-    function navGame() { 
-      getRandomChar();
-      setOpen(false);
+  const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate() 
+  const charToGuess = useSelectedCharContext()
   
-    
-    
+  function navGame() { 
+    getRandomChar();
+    setOpen(false);
     }
-    
-    const navHome = () => navigate('/')
- 
-
-    return (
+  
+  const navHome = () => navigate('/')
+  
+  return (
     <div>
-        
-      
-      <Dialog  open={open} >
-        <DialogTitle>{"Yeah!! You Win!!!!"}</DialogTitle>
+      <Dialog  open={open} disableEnforceFocus>
+        <DialogTitle>{`Yes!! Is ${charToGuess.selectedChar.id} `}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            
-            <p>You needed {time} minutes and {questCounter} questions to guess</p>
+            <p>You guessed in {time} minutes and {questCounter} questions </p>
           </DialogContentText>
-       
         </DialogContent>
         <DialogActions>
-            
           <Button onClick={navGame} 
                   variant="contained" color="primary" autoFocus>
             Play again
@@ -48,7 +40,7 @@ function WinnerDialog({time, questCounter, getRandomChar}){
           </Button>
         </DialogActions>
       </Dialog>
-      </div>
+    </div>
   );
 }
     

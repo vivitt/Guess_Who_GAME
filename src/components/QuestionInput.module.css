@@ -1,31 +1,35 @@
-.questSection {
+.questSection .question, .questSection .question form {
     /* background-color: #7FCDC3; */
     display: flex;
     flex-direction: column;
-   
+    justify-content: center;
+    align-items: center;
     margin-top: 0;
+    
 }
 
 .question, .answer {
     background-color: #A98DB8;
-    display: inline-block;
+    
     border-radius: 20px;
     padding: 1rem;
     margin: 1rem;
-   
 }
 .input {
-    margin-top: 1rem;
+   margin:  1rem 0 ;
 }
 .title {
   font-family: 'VT323', monospace;
   color: whitesmoke;
   font-size: 2rem;
   padding-bottom: 1rem;
+  
 }
 .text {
+    font-family: 'VT323', monospace;
     text-transform: uppercase;
     color: #B2DFDB;
+    font-size: 1.3rem;
 }
 
 .questMark {
@@ -41,10 +45,10 @@
 }
 
 .answer {
-    color: #B2DFDB;
+color: red;
 }
 .yOrN {
     font-family: 'VT323', monospace;
-    color: whitesmoke; 
+    color: red; 
     font-size: 2rem;
 }

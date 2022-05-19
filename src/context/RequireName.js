@@ -10,9 +10,7 @@ export const RequireName = ({children}) => {
     if(authUser.userName === "") {
         return <Navigate to="/" state={{ from : location }} replace />
 }
-return   children
-
-
+    return   children
 }
 export default RequireName
 
