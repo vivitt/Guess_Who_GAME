@@ -20,6 +20,8 @@ function Char({char, allCharClass, discardedChars, setDiscardedChars}) {
             
         } else {
             setDiscarded(false)
+            setDiscardedChars(discardedChars.filter((item) => item !== char.id))
+            console.log('removing' + char.id + '****'+ discardedChars)
 
            
         }
