@@ -32,6 +32,7 @@ body {
   
   
 }
+
 .box {
   justify-content: center;
   align-items: center;
@@ -154,13 +155,14 @@ body {
 .game-main {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-  max-width: 100%;
+  align-items: stretch;
+  
   margin: 1rem;
   /* background-color: #A98DB8; */
   /* border-radius: 10px; */
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 0;  
+ 
   
 }
 .gameBtns {
@@ -175,16 +177,6 @@ body {
   display: inline;
 }
 
-
-.discard img {
-   opacity: 15%;
-    z-index: 30;
-    filter: hue-rotate(30deg);
-  } 
-  .discard p {
-    opacity: 15%;
-  
-   } 
 
 
 
@@ -231,3 +223,20 @@ body {
   
 }
 
+.discard img {
+  opacity: 15%;
+   z-index: 30;
+   filter: hue-rotate(30deg);
+ } 
+ .discard p {
+   opacity: 15%;
+ 
+  } 
+ .clear img {
+   opacity: 100%;
+   filter: none;
+
+ }
+ .clear p {
+   opacity: 100%;
+ }

@@ -2,14 +2,21 @@
   
   background-color: #FFFFFF;
   border-radius: 10px;
-  padding: 0.5rem;
+  padding: 0.2rem 0.5rem;
   margin: 0.5rem 0.2rem
 }
 .card p {
   color: #673BB7;
+  padding: 0;
+  margin: 0;
+  
+}
+.card a {
+  
+  padding: 0;
+  margin: 0;
 }
 .charCard {
-  
   background-color: transparent;
   appearance: none;
   outline: none;

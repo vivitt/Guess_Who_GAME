@@ -21,8 +21,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 function Game ({mode, setMode}) {
-    // ////DIALOG
-    // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
+
     //USERNAME
     const currentUser = useUserContext()
     const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
@@ -39,9 +38,11 @@ function Game ({mode, setMode}) {
     const [haveWinner, setHaveWinner ] = useState(false);
     const [ haveLoser, setHaveLoser ] = useState(false)
     const [openTryDialog, setOpenTryDialog] = React.useState(true);
-    const [ allCharClass, setAllCharClass ] = useState('');
+    const [ discardedChars, setDiscardedChars] = useState([]);
     ////\\\\char to guess
     const charToGuess = useSelectedCharContext()
+
+    const [ clearDiscardClass, setClearDiscardClass ] = useState('')
     ////////////////////////////////////
     const getRandomChar = () => {
         setHaveLoser(false);
@@ -49,7 +50,7 @@ function Game ({mode, setMode}) {
         setTries(0)
         setSeconds(0)
         setQuestCounter(0)
-        setAllCharClass('')
+        setDiscardedChars([])
         toggleDrawer('right', false)
         toggleDrawer('left', false)
         const len = characters.length;
@@ -184,8 +185,9 @@ setState({ ...state, [anchor]: close });
             <Button variant='contained' color='secondary' onClick={toggleDrawer('right', true)}>
             try to GUESS<FaceIcon></FaceIcon>  </Button>
             </div>
-            <div className="game-main"> { characters.map(char => ( <Char allCharClass={allCharClass} setAllCharClass={setAllCharClass} char={char}  /> )) } </div>
-            
+          
+            <div className="game-main"> { characters.map(char => ( <Char discardedChars={discardedChars} setDiscardedChars={setDiscardedChars} char={char}  /> )) } </div>
+           
             <SwipeableDrawer anchor="right" open={state['right']} onClose={toggleDrawer('right', false)}onOpen={toggleDrawer('right', true)}>
             
                 <div className="playerArea">

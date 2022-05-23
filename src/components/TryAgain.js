@@ -19,7 +19,7 @@ function TryAgain({oneTry, openTryDialog, setOpenTryDialog}){
         <DialogTitle >{"No :("}</DialogTitle>
         <DialogContent >
           <DialogContentText>
-          <p>It is not {oneTry.toUpperCase()}</p> 
+          <p>It's not {oneTry.toUpperCase()}</p> 
           
           </DialogContentText>
         </DialogContent>

@@ -66,8 +66,8 @@ function Home ({mode, setMode}) {
                 <div className="homeImg">
                     
                     <picture>
-                        <source media="(max-width: 799px)" srcset="guesswho_500.png" />
-                        <source media="(min-width: 800px)" srcset="guesswho_800.png" />
+                        <source media="(max-width: 799px)" srcSet="guesswho_500.png" />
+                        <source media="(min-width: 800px)" srcSet="guesswho_800.png" />
                         <img src="guesswho_800.png" alt='cards from the guess who game' />
                     </picture>
 

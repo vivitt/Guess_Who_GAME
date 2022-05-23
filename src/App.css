@@ -38,12 +38,3 @@
 }
 
 
-.discard img {
-  opacity: 15%;
-   z-index: 30;
-   filter: hue-rotate(30deg);
- } 
- .discard p {
-   opacity: 15%;
- 
-  } 
