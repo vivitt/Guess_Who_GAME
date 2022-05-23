@@ -20,10 +20,10 @@ function HowToPlayDialog({open, setOpen}){
           <div className="howToPlay">
             <div className="instrucctions">
               <h2>How to Play</h2>
-              <p>The goal of the game is to guess who the person is by asking questions and discarding characters. <br/>Clicking in a character will toggle their discarded state. </p>
-             
+              <p>The goal of the game is to guess who the person is by asking questions and discarding characters. </p>
               <p>You can make as many questions as you want in EASY mode and 5 questions in HARD mode.</p>
-              <p>When have an idea, you can write the person name in the guess field and try...<br/>
+              <p>Click in characters to discard them.</p>
+              <p>Wherever you want, you can try to guess by submiting the person name in the guess field...<br/>
               But be aware you only have 3(EASY) or 1 (HARD) tries to guess!</p>
               <p>Hope you enjoy playing!</p>
             </div>
