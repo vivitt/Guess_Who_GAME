@@ -4,9 +4,7 @@ import characters from "../characters"
 import Char  from  "../components/Char"
 import { firstChoice, secondChoice } from "../QuestOptions"
 import { useUserContext } from "../context/UserContextProv"
-import WinnerDialog from '../components/WinnerDialog';
 import { useSelectedCharContext } from "../context/SelectedCharContx";
-import LoserDialog from '../components/LoserDialog';
 import { Paper } from '@material-ui/core'
 import { ThemeProvider } from '@material-ui/core';
 import theme from '../theme';
@@ -14,15 +12,17 @@ import QuestionInput from "../components/QuestionInput"
 import CurrentGameInfo from "../components/CurrentGameInfo"
 import GuessSection from "../components/GuessSection"
 import Clock from "../components/Clock"
-import TryAgain from '../components/TryAgain';
+import EndDialog from '../components/EndDialog';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Button } from "@material-ui/core";
 import FaceIcon from '@mui/icons-material/Face';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import { useSoundContext } from '../context/SoundContext';
+
+import PlayingDialog from '../components/PlayingDialog';
 
 function Game ({mode, setMode}) {
-    // ////DIALOG
-    // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
+
     //USERNAME
     const currentUser = useUserContext()
     const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
@@ -38,10 +38,16 @@ function Game ({mode, setMode}) {
     const [ timeNeeded, setTimeNeeded ] = useState(0)
     const [haveWinner, setHaveWinner ] = useState(false);
     const [ haveLoser, setHaveLoser ] = useState(false)
-    const [openTryDialog, setOpenTryDialog] = React.useState(true);
-    const [ allCharClass, setAllCharClass ] = useState('');
+    const [openAnswerDialog, setOpenAnswerDialog] = React.useState(true);
+    const [openTryAgainDialog, setOpenTryAgainDialog] = React.useState(true);
+    const [ discardedChars, setDiscardedChars] = useState([]);
+    
+    ///////SOUND/////////////////////
+    const sound = useSoundContext()
+
     ////\\\\char to guess
     const charToGuess = useSelectedCharContext()
+    const [ question, setQuestion ] = useState([])
     ////////////////////////////////////
     const getRandomChar = () => {
         setHaveLoser(false);
@@ -49,13 +55,13 @@ function Game ({mode, setMode}) {
         setTries(0)
         setSeconds(0)
         setQuestCounter(0)
-        setAllCharClass('')
+        setDiscardedChars([])
         toggleDrawer('right', false)
         toggleDrawer('left', false)
         const len = characters.length;
         const random = characters[Math.floor(Math.random() * len)]
         charToGuess.setSelectedChar({...random})
-       
+        
         let interval = null;
         interval = setInterval(() => {
             setSeconds(seconds => seconds + 1);
@@ -76,15 +82,20 @@ function Game ({mode, setMode}) {
     
     function submitQuest(e) {
         e.preventDefault();
+        
+        setOpenAnswerDialog(true)
         if (mode === 'easy' || mode === 'hard' && questCounter < 5) {
         setQuestionStatus('')
         const quest = {firstValue , secondValue}
         if ( secondValue === '') {
             setQuestionStatus('error')
+            if (sound.mute === false) sound.wrong()
         } else {
+            toggleDrawerOnDialog('left', false)
             setQuestionStatus('ok')
             getAnswer(quest)
             setQuestCounter(questCounter+1)
+
         }
    
         setFirstValue('00')
@@ -96,12 +107,16 @@ function Game ({mode, setMode}) {
     function getAnswer(quest) {
       
         let currentQuest = quest.firstValue + quest.secondValue;
+        setQuestion([quest.firstValue,quest.secondValue])
+
         let check = (Object.keys(charToGuess.selectedChar).find((key) => key === currentQuest))
         if (charToGuess.selectedChar[check] == true) {
             
             setAnswer('Yes')
+            if (sound.mute === false) sound.right()
         } else {
             setAnswer('No')
+            if (sound.mute === false) sound.right()
                 
         }
  
@@ -115,29 +130,33 @@ function Game ({mode, setMode}) {
     const [ tries, setTries ] = useState(0)
     const [ tryAgain, setTryAgain ] = useState(false)
     const [ oneTry, setOneTry ] = useState('')
+    
     function submitGuess(e) {
         e.preventDefault();
         setTryAgain(false)
-        setOpenTryDialog(true)
+        setOpenTryAgainDialog(true)
         if (guess !== '')
             setTries(tries+1)
             setOneTry(guess)
             setGuess('')
             toggleDrawerOnDialog('right', false)
-            console.log(oneTry)
-            console.log(charToGuess.selectedChar.id)
+       
             if (guess.toUpperCase() !== charToGuess.selectedChar.id) {
                 if (mode ==='easy' && tries === 2) {
                 setHaveLoser(true)
+                if (sound.mute === false) sound.loser();
             } else if (mode === 'hard' && tries === 0){
                 setHaveLoser(true)
+                if (sound.mute === false) sound.loser();
             } else {
-            setTryAgain(true)
+            setTryAgain(true);
+            if (sound.mute === false) sound.loser();
         } 
     }
         else { 
        
             setHaveWinner(true);
+            if (sound.mute === false) sound.winner();
             setTimeNeeded(Math.ceil(seconds/60))
             setSeconds(0)
         } 
@@ -154,6 +173,7 @@ const [state, setState] = React.useState({
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
+    if (sound.mute === false) sound.btnClick()
     if (
       event &&
       event.type === 'keydown' &&
@@ -184,8 +204,9 @@ setState({ ...state, [anchor]: close });
             <Button variant='contained' color='secondary' onClick={toggleDrawer('right', true)}>
             try to GUESS<FaceIcon></FaceIcon>  </Button>
             </div>
-            <div className="game-main"> { characters.map(char => ( <Char allCharClass={allCharClass} setAllCharClass={setAllCharClass} char={char}  /> )) } </div>
-            
+          
+            <div className="game-main"> { characters.map(char => ( <Char discardedChars={discardedChars} setDiscardedChars={setDiscardedChars} char={char}  /> )) } </div>
+           
             <SwipeableDrawer anchor="right" open={state['right']} onClose={toggleDrawer('right', false)}onOpen={toggleDrawer('right', true)}>
             
                 <div className="playerArea">
@@ -209,10 +230,16 @@ setState({ ...state, [anchor]: close });
         </React.Fragment>
         </Paper>
     </div>
+        <div> {
+            (questionStatus === 'ok') && <PlayingDialog open={openAnswerDialog} setOpen={setOpenAnswerDialog} text={(answer === 'Yes')
+            ? `This person has ${Object.keys(firstChoice).find(key => firstChoice[key] === question[0])} ${Object.keys(secondChoice).find(key => secondChoice[key] === question[1])}` 
+            :`No ${Object.keys(firstChoice).find(key => firstChoice[key] === question[0])} ${Object.keys(secondChoice).find(key => secondChoice[key] === question[1])}` } title={answer}></PlayingDialog>}
+        </div>
         <div>
-            {(tryAgain === true) && <TryAgain oneTry={oneTry} openTryDialog={openTryDialog} setOpenTryDialog={setOpenTryDialog} />}
-            {(haveWinner === true) && <WinnerDialog time={timeNeeded} getRandomChar={getRandomChar}  questCounter={questCounter}/> }
-            {(haveLoser === true) && <LoserDialog  getRandomChar={getRandomChar} />}
+            {/* {(tryAgain === true) && <TryAgain oneTry={oneTry} openTryDialog={openTryDialog} setOpenTryDialog={setOpenTryDialog} />} */}
+            {(tryAgain === true) && <PlayingDialog open={openTryAgainDialog} setOpen={setOpenTryAgainDialog} text={`It's not ${oneTry.toUpperCase()}`} title={'No :('}></PlayingDialog>}
+            {(haveWinner === true) && <EndDialog  getRandomChar={getRandomChar} text={`You guessed in ${timeNeeded} minutes and ${questCounter} questions`}  title={`Yes!! Is ${charToGuess.selectedChar.id} ` } /> }
+            {(haveLoser === true) && <EndDialog  text={'Run out of tries'}  title={":( "}   getRandomChar={getRandomChar} />}
             
           </div>
         

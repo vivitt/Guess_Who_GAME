@@ -12,6 +12,7 @@ import { deepPurple } from "@mui/material/colors"
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
+import { useSoundContext } from "../context/SoundContext"
 
 function Home ({mode, setMode}) {
     
@@ -21,40 +22,43 @@ function Home ({mode, setMode}) {
     const navigate = useNavigate();
     const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
     
-
+    const sound = useSoundContext()
 
 
     function submitName(event ) {
         event.preventDefault()
-       
+        
         currentUser.setUserName(value);
         currentUser.setProfileImg(imgNum)
         setValue("")
         navigate('/game')
+        if (sound.mute === false) sound.winner()
+
     }
     
-    const navHowToPlay = () => navigate('/howtoplay')
-    
-    const navGame = () => navigate('/game')
+   
     const [imgNum, setImgNum ] = useState(1)
 
     const increaseNum = () => {
-        if(imgNum=== 5) {setImgNum(1)
-
-        }else {setImgNum(imgNum+1)}}
+        
+        if(imgNum=== 5) {setImgNum(1) } else { setImgNum(imgNum+1);}
+        if (sound.mute === false) sound.swipeImg();}
     const decreaseNum = () => {
-        if(imgNum=== 1) {setImgNum(5)
-    }else {setImgNum(imgNum-1)}}
+        
+        if(imgNum=== 1) {setImgNum(5)}else {setImgNum(imgNum-1)}
+        if (sound.mute === false) sound.swipeImg();}
 
     const setEasy = () => {
         setMode('easy')
         setSelectedMode('infinite questions & 3 tries to guess')
+        if (sound.mute === false) sound.btnClick()
     }
     const setHard = () => {
         setMode('hard')
         setSelectedMode('5 questions & 1 try to guess')
+        if (sound.mute === false) sound.btnClick()
     }
-     
+  
     return (
         
         <ThemeProvider theme={theme}>
@@ -66,8 +70,8 @@ function Home ({mode, setMode}) {
                 <div className="homeImg">
                     
                     <picture>
-                        <source media="(max-width: 799px)" srcset="guesswho_500.png" />
-                        <source media="(min-width: 800px)" srcset="guesswho_800.png" />
+                        <source media="(max-width: 799px)" srcSet="guesswho_500.png" />
+                        <source media="(min-width: 800px)" srcSet="guesswho_800.png" />
                         <img src="guesswho_800.png" alt='cards from the guess who game' />
                     </picture>
 

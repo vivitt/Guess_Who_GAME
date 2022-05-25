@@ -4,10 +4,12 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
+import { useSoundContext } from "../context/SoundContext";
 
 function HowToPlayDialog({open, setOpen}){
-  
+  const sound = useSoundContext()
   function close(e) { 
+    if (sound.mute === false) sound.btnClick()
     e.preventDefault()
     setOpen(false);
     
@@ -20,15 +22,14 @@ function HowToPlayDialog({open, setOpen}){
           <div className="howToPlay">
             <div className="instrucctions">
               <h2>How to Play</h2>
-              <p>The goal of the game is to guess who the person is by asking questions and discarding characters. <br/>Clicking in a character will toggle their discarded state. </p>
-              <div>
-                <img style={{display: 'inline'}} alt='question maker menu' width='100px' src='ask.gif'></img>
-                <img style={{display: 'inline'}} alt='try to guess menu' width='100px' src='guess.gif'></img>
-              </div>
+              <p>The goal of the game is to guess who the person is by asking questions and discarding characters. </p>
               <p>You can make as many questions as you want in EASY mode and 5 questions in HARD mode.</p>
-              <p>When have an idea, you can write the person name in the guess field and try...<br/>
+              <p>Click in characters to discard them.</p>
+              <p>Whenever you want, you can try to guess by submiting the person name in the guess field...<br/>
               But be aware you only have 3(EASY) or 1 (HARD) tries to guess!</p>
               <p>Hope you enjoy playing!</p>
+              <br/>
+              <p>You can reach me at ✉️ with any suggestion or comment</p>
             </div>
           </div>
         </DialogContentText>

@@ -18,15 +18,17 @@ import { UserContextProv } from './context/UserContextProv'
 import SelectedCharContextProv, { SelectedCharContext } from './context/SelectedCharContx';
 import NavBar from './components/NavBar';
 import { useState } from 'react';
-
+import { SoundContextProv } from './context/SoundContext';
 
 
 
 function App() {
-const [ mode, setMode ] = useState('easy')
+const [ mode, setMode ] = useState('easy');
+
 
   
   return (
+    <SoundContextProv>
     <UserContextProv >
       <SelectedCharContextProv>
         
@@ -43,17 +45,17 @@ const [ mode, setMode ] = useState('easy')
                    
                    <Route path="/game" element={ <RequireName><Game mode={mode} setMode={setMode}  /> </RequireName>} /> 
                    
-                   {/* <Route path="/howtoplay" element={ <HowToPlay />  } /> */}
+
                    <Route path="*" element={<NotFound />} />
                  </Routes>
                </main> 
              </Router>
-             <Footer text={'© VivianaY 2022 | Guess Who Game | Made with ♥︎ '}/>
+             <Footer text={'© VivianaY 2022 | Guess Who Game | Made with ♥︎ Fighting gender inequality '}/>
            </div>
            
            </SelectedCharContextProv>  
           </UserContextProv>
-   
+        </SoundContextProv>
   );
 }
 
