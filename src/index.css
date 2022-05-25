@@ -180,28 +180,18 @@ body {
 
 
 
-   @media (max-width: 799px) {
-    .box, .game {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
-      align-items: center;
-      
-    }
 
- 
- 
- 
- 
-  
-      
-    }
     
 .notFound  {
-  
+  width: 800px;
   border-radius: 30px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('../public/guesswho.png');
+  background-repeat: no-repeat;
+  background-position: right 0px;
   
   }   
 .notFound .text {
@@ -218,10 +208,7 @@ body {
   padding: 2rem;
   
 }
-.notFoundImg {
-  max-width: 400px;
-  
-}
+
 
 .discard img {
   opacity: 15%;
@@ -240,3 +227,25 @@ body {
  .clear p {
    opacity: 100%;
  }
+
+ .footer p {
+  text-align: center;
+  color: #673BB7;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 799px) {
+  .box, .game {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    
+  };
+  .notFound {
+    width: auto;
+    display: flex;
+    flex-flow: row wrap;
+    
+  }
+}

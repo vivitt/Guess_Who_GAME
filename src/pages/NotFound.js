@@ -28,8 +28,7 @@ const NotFound = () => {
                     <span><NavLink to='/' >Back</NavLink> to the homepage... </span>}
                     </div>
                 </div>
-                <img className='NotFoundImg' src="guesswho.png"></img>
-                
+              
                 </div>
         
         </Paper>

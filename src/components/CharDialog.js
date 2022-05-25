@@ -5,12 +5,13 @@ import Button from "@material-ui/core/Button";
 import CloseIcon from '@mui/icons-material/Close';
 import Paper from "@mui/material/Paper";
 import { deepPurple } from "@mui/material/colors";
-
+import { useSoundContext } from "../context/SoundContext";
 
 function CharDialog({char, open, setOpen}){
-  
+  const sound = useSoundContext()
   const imgPath = char.image; 
   function close() { 
+    if (sound.mute === false) sound.btnClick()
     setOpen(false);
   }
   

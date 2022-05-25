@@ -5,27 +5,25 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
+import CloseIcon from '@mui/icons-material/Close';
 
-
-function TryAgain({oneTry, openTryDialog, setOpenTryDialog}){
-  
-  
-  function navGame() { 
-    setOpenTryDialog(false);
+function PlayingDialog ({open, setOpen, title, text}){
+  function close() { 
+    setOpen(false);
   }
   return (
     <div >
-      <Dialog  open={openTryDialog} disableEnforceFocus>
-        <DialogTitle >{"No :("}</DialogTitle>
+      <Dialog  open={open} disableEnforceFocus>
+        <DialogTitle >{title}</DialogTitle>
         <DialogContent >
           <DialogContentText>
-          <p>It's not {oneTry.toUpperCase()}</p> 
+          <p>{text}</p> 
           
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={navGame} variant="contained" color="primary"  autoFocus>
-            Continue
+          <Button onClick={close} variant="contained" color="secondary"   autoFocus>
+            <CloseIcon></CloseIcon>
           </Button>
         </DialogActions>
       </Dialog>
@@ -36,4 +34,4 @@ function TryAgain({oneTry, openTryDialog, setOpenTryDialog}){
     
    
 
-export default TryAgain
+export default PlayingDialog

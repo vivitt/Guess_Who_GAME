@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"; 
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 
-function WinnerDialog({time, questCounter, getRandomChar}){
+function EndDialog({getRandomChar, title, text}){
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate() 
   const charToGuess = useSelectedCharContext()
@@ -23,10 +23,11 @@ function WinnerDialog({time, questCounter, getRandomChar}){
   return (
     <div>
       <Dialog  open={open} disableEnforceFocus>
-        <DialogTitle>{`Yes!! Is ${charToGuess.selectedChar.id} `}</DialogTitle>
+        <DialogTitle>{title}</DialogTitle>
+       
         <DialogContent>
           <DialogContentText>
-            <p>You guessed in {time} minutes and {questCounter} questions </p>
+            <p>{text}</p>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -47,4 +48,4 @@ function WinnerDialog({time, questCounter, getRandomChar}){
     
    
 
-export default WinnerDialog
+export default EndDialog

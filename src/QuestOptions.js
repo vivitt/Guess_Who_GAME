@@ -22,3 +22,5 @@ export const secondChoice = { '':'',
         'BRAIDS': '46',
         'EYES': '47'
     }
+
+
