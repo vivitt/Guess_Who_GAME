@@ -132,10 +132,12 @@ function Game ({mode, setMode}) {
     const [ oneTry, setOneTry ] = useState('')
     
     function submitGuess(e) {
+        
         e.preventDefault();
         setTryAgain(false)
         setOpenTryAgainDialog(true)
-        if (guess !== '')
+        
+        if (guess !== '') {
             setTries(tries+1)
             setOneTry(guess)
             setGuess('')
@@ -153,6 +155,7 @@ function Game ({mode, setMode}) {
             if (sound.mute === false) sound.loser();
         } 
     }
+
         else { 
        
             setHaveWinner(true);
@@ -161,6 +164,7 @@ function Game ({mode, setMode}) {
             setSeconds(0)
         } 
    
+    }
     }
     // (guess.toUpperCase() !== charToGuess.selectedChar.id) 
 ///////////////////DRAWER
@@ -239,7 +243,7 @@ setState({ ...state, [anchor]: close });
             {/* {(tryAgain === true) && <TryAgain oneTry={oneTry} openTryDialog={openTryDialog} setOpenTryDialog={setOpenTryDialog} />} */}
             {(tryAgain === true) && <PlayingDialog open={openTryAgainDialog} setOpen={setOpenTryAgainDialog} text={`It's not ${oneTry.toUpperCase()}`} title={'No :('}></PlayingDialog>}
             {(haveWinner === true) && <EndDialog  getRandomChar={getRandomChar} text={`You guessed in ${timeNeeded} minutes and ${questCounter} questions`}  title={`Yes!! Is ${charToGuess.selectedChar.id} ` } /> }
-            {(haveLoser === true) && <EndDialog  text={'Run out of tries'}  title={":( "}   getRandomChar={getRandomChar} />}
+            {(haveLoser === true) && <EndDialog  img={charToGuess.selectedChar.image} text={`The person was ${charToGuess.selectedChar.id}`}  title={"No :( "}   getRandomChar={getRandomChar} />}
             
           </div>
         

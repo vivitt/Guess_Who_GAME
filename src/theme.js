@@ -133,6 +133,7 @@ theme.props = {
      root: {
         padding: 10,
       }, 
+    
       paperScrollBody: {
        
       
@@ -144,7 +145,7 @@ theme.props = {
         textAlign: 'center',
         
        
-      }
+      },
     
     },
     MuiDialogContent: {
