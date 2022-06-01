@@ -1,5 +1,5 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useUserContext } from "../context/UserContextProv"
 import { Paper, TextField } from '@material-ui/core'
@@ -24,6 +24,7 @@ function Home ({mode, setMode}) {
 
 
     function submitName(event ) {
+        
         event.preventDefault()
         
         currentUser.setUserName(value);
@@ -34,7 +35,8 @@ function Home ({mode, setMode}) {
 
     }
     
-   
+    
+    
     const [imgNum, setImgNum ] = useState(1)
 
     const increaseNum = () => {
@@ -56,7 +58,10 @@ function Home ({mode, setMode}) {
         setSelectedMode('5 questions & 1 try to guess')
         if (sound.mute === false) sound.btnClick()
     }
+
   
+ 
+
     return (
         
         <ThemeProvider theme={theme}>

@@ -1,5 +1,5 @@
 import React from "react"
-import { useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom"
 import { useUserContext } from "../context/UserContextProv"
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
@@ -18,6 +18,9 @@ function NavBar() {
     const [open, setOpen] = React.useState(false);
     const sound = useSoundContext();
     
+
+
+
     function deleteCurrentUser() {
         if (sound.mute === false) sound.btnClick()
         currentUser.setUserName('')
@@ -30,11 +33,14 @@ function NavBar() {
     }
     function soundButton(e) {
         e.preventDefault()
-        if (sound.mute === false) sound.btnClick()
+        
         if (sound.mute === false) {
+            sound.btnClick();
             sound.setMute(true)
+            
     } else {
         sound.setMute(false)
+        
     }
 }   
     return (

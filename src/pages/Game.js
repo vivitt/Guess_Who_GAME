@@ -27,7 +27,7 @@ function Game ({mode, setMode}) {
     const currentUser = useUserContext()
     const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
     const [seconds, setSeconds] = useState(0);
-    
+  
     ////////////////////////////////////
     
     const [ firstValue, setFirstValue ] = useState('')
@@ -50,6 +50,7 @@ function Game ({mode, setMode}) {
     const [ question, setQuestion ] = useState([])
     ////////////////////////////////////
     const getRandomChar = () => {
+        
         setHaveLoser(false);
         setHaveWinner(false);
         setTries(0)
@@ -61,6 +62,7 @@ function Game ({mode, setMode}) {
         const len = characters.length;
         const random = characters[Math.floor(Math.random() * len)]
         charToGuess.setSelectedChar({...random})
+       
         
         let interval = null;
         interval = setInterval(() => {
@@ -70,6 +72,7 @@ function Game ({mode, setMode}) {
    
         useEffect(() => {
             getRandomChar();
+            
            }, [])
     /////////////////////////////////////////////
 
@@ -242,7 +245,7 @@ setState({ ...state, [anchor]: close });
         <div>
             {/* {(tryAgain === true) && <TryAgain oneTry={oneTry} openTryDialog={openTryDialog} setOpenTryDialog={setOpenTryDialog} />} */}
             {(tryAgain === true) && <PlayingDialog open={openTryAgainDialog} setOpen={setOpenTryAgainDialog} text={`It's not ${oneTry.toUpperCase()}`} title={'No :('}></PlayingDialog>}
-            {(haveWinner === true) && <EndDialog  getRandomChar={getRandomChar} text={`You guessed in ${timeNeeded} minutes and ${questCounter} questions`}  title={`Yes!! Is ${charToGuess.selectedChar.id} ` } /> }
+            {(haveWinner === true) && <EndDialog  img={charToGuess.selectedChar.image} getRandomChar={getRandomChar} text={`You guessed in ${timeNeeded} minutes and ${questCounter} questions`}  title={`Yes!! Is ${charToGuess.selectedChar.id} ` } /> }
             {(haveLoser === true) && <EndDialog  img={charToGuess.selectedChar.image} text={`The person was ${charToGuess.selectedChar.id}`}  title={"No :( "}   getRandomChar={getRandomChar} />}
             
           </div>

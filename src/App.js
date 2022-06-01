@@ -30,10 +30,11 @@ const [ mode, setMode ] = useState('easy');
   return (
     <SoundContextProv>
     <UserContextProv >
+  
       <SelectedCharContextProv>
         
       <div className="app">
-
+    
         <Router>
           <NavBar />
           
@@ -51,9 +52,11 @@ const [ mode, setMode ] = useState('easy');
                </main> 
              </Router>
              <Footer text={'© VivianaY 2022 | Guess Who Game | Made with ♥︎ Fighting gender inequality '}/>
-           </div>
-           
+            
+             </div>
+        
            </SelectedCharContextProv>  
+           
           </UserContextProv>
         </SoundContextProv>
   );
