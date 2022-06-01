@@ -213,20 +213,16 @@ body {
 .discard img {
   opacity: 15%;
    z-index: 30;
-   filter: hue-rotate(30deg);
+   
  } 
  .discard p {
    opacity: 15%;
  
   } 
- .clear img {
-   opacity: 100%;
-   filter: none;
-
- }
- .clear p {
-   opacity: 100%;
- }
+.dialogImg img {
+  width: 150px;
+  border-radius: 50px;
+}
 
  .footer p {
   text-align: center;

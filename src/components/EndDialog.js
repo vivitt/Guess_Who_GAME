@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom"; 
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 
-function EndDialog({getRandomChar, title, text}){
+function EndDialog({getRandomChar, title, text, img}){
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate() 
   const charToGuess = useSelectedCharContext()
@@ -21,12 +21,16 @@ function EndDialog({getRandomChar, title, text}){
   const navHome = () => navigate('/')
   
   return (
-    <div>
+    <div >
       <Dialog  open={open} disableEnforceFocus>
         <DialogTitle>{title}</DialogTitle>
        
         <DialogContent>
+          <div className="dialogImg">
+         <img  src={require(`../imgs/${img}`)} alt='img' />
+         </div>
           <DialogContentText>
+            
             <p>{text}</p>
           </DialogContentText>
         </DialogContent>

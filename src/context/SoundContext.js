@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect} from "react";
 import useSound from 'use-sound';
 import Swipe from '../sounds/swipe.mp3'
 import Winner from '../sounds/win.mp3'
@@ -39,6 +39,18 @@ export const SoundContextProv = ({ children }) => {
     { volume: 0.25 }
 
   );
+
+  useEffect(() => {
+    const soundS = window.localStorage.getItem('sound_mute')
+    
+    if (soundS !== null) {setMute(JSON.parse(soundS))}
+}, [])
+
+useEffect (() => {
+    window.localStorage.setItem('sound_mute', JSON.stringify(mute))
+  }, [mute]);
+
+
   return (
       <SoundContext.Provider value={{mute, setMute, btnClick, winner, swipeImg, loser, right, wrong}} >
         {children}

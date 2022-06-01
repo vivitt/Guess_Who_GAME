@@ -1,11 +1,9 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useUserContext } from "../context/UserContextProv"
 import { Paper, TextField } from '@material-ui/core'
-
 import { Button } from "@material-ui/core";
-
 import { ThemeProvider } from '@material-ui/core';
 import theme from '../theme';
 import { deepPurple } from "@mui/material/colors"
@@ -26,6 +24,7 @@ function Home ({mode, setMode}) {
 
 
     function submitName(event ) {
+        
         event.preventDefault()
         
         currentUser.setUserName(value);
@@ -36,7 +35,8 @@ function Home ({mode, setMode}) {
 
     }
     
-   
+    
+    
     const [imgNum, setImgNum ] = useState(1)
 
     const increaseNum = () => {
@@ -58,7 +58,10 @@ function Home ({mode, setMode}) {
         setSelectedMode('5 questions & 1 try to guess')
         if (sound.mute === false) sound.btnClick()
     }
+
   
+ 
+
     return (
         
         <ThemeProvider theme={theme}>
@@ -97,7 +100,7 @@ function Home ({mode, setMode}) {
                             <Button onClick={increaseNum} > <ArrowRightIcon sx={{ color: deepPurple[500] }}></ArrowRightIcon> </Button>
                         </div>
                         <div className="getUserName">
-                            <TextField required={true} label="ENTER YOUR NAME" type="text" value={value} onChange={(e)=>setValue(e.target.value)}/>
+                            <TextField required={true}  label="ENTER YOUR NAME" type="text" value={value} onChange={(e)=>setValue(e.target.value)}/>
                             
                         </div>
                         <Button variant='contained' color='primary' onClick={submitName}>Play!</Button>
