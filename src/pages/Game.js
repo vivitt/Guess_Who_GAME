@@ -27,7 +27,12 @@ function Game ({mode, setMode}) {
     const currentUser = useUserContext()
     const userPlay = currentUser.userName.charAt(0).toUpperCase() + currentUser.userName.slice(1);
     const [seconds, setSeconds] = useState(0);
-  
+    useEffect(() => {
+        const currentPlayer = sessionStorage.getItem('CURRENT_PLAYER')
+        
+        if (currentPlayer) setUserName(currentPlayer)
+        
+      }, [])
     ////////////////////////////////////
     
     const [ firstValue, setFirstValue ] = useState('')

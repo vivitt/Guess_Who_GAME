@@ -13,7 +13,7 @@ export const RequireName = ({children}) => {
         authUser.userName = sessionStorage.getItem('CURRENT_PLAYER');
       }
 
-    if(!authUser.userName) {
+    if(authUser.userName === '') {
         return <Navigate to="/" state={{ from : location }} replace />
 } 
     return   children
