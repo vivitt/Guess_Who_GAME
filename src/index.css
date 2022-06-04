@@ -243,5 +243,8 @@ body {
     display: flex;
     flex-flow: row wrap;
     
+  };
+  .homeImg {
+    display: none;
   }
 }
