@@ -17,8 +17,8 @@ function CharDialog({char, open, setOpen}){
   
   return (
     <div >
-      <Dialog open={open} >
-        <Paper scroll="body" >
+      <Dialog open={open} scroll="paper">
+        <Paper square={true}>
      
           <DialogContent dividers={true} >
             <img width='300px' src={require(`../imgs/${imgPath}`)} alt={char.descr} />

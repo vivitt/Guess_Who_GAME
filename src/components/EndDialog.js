@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom"; 
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 
-function EndDialog({getRandomChar, title, text, img}){
+function EndDialog({getRandomChar, title, text, img, name}){
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate() 
   const charToGuess = useSelectedCharContext()
@@ -24,16 +24,14 @@ function EndDialog({getRandomChar, title, text, img}){
     <div >
       <Dialog  open={open} disableEnforceFocus>
         <DialogTitle>{title}</DialogTitle>
-       
+        
         <DialogContent>
           <div className="dialogImg">
-         <img  src={require(`../imgs/${img}`)} alt='img' />
+            <img  src={require(`../imgs/${img}`)} alt='img' />
+            <p>{name}</p>
          </div>
-          <DialogContentText>
-            
-            <p>{text}</p>
-          </DialogContentText>
         </DialogContent>
+        <DialogContentText><p>{text}</p></DialogContentText>
         <DialogActions>
           <Button onClick={navGame} 
                   variant="contained" color="primary" autoFocus>

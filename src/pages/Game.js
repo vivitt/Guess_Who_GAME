@@ -252,8 +252,8 @@ setState({ ...state, [anchor]: close });
         <div>
             {/* {(tryAgain === true) && <TryAgain oneTry={oneTry} openTryDialog={openTryDialog} setOpenTryDialog={setOpenTryDialog} />} */}
             {(tryAgain === true) && <PlayingDialog open={openTryAgainDialog} setOpen={setOpenTryAgainDialog} text={`It's not ${oneTry.toUpperCase()}`} title={'No :('}></PlayingDialog>}
-            {(haveWinner === true) && <EndDialog  img={charToGuess.selectedChar.image} getRandomChar={getRandomChar} text={`You guessed in ${timeNeeded} minutes and ${questCounter} questions`}  title={`Yes!! Is ${charToGuess.selectedChar.id} ` } /> }
-            {(haveLoser === true) && <EndDialog  img={charToGuess.selectedChar.image} text={`The person was ${charToGuess.selectedChar.id}`}  title={"No :( "}   getRandomChar={getRandomChar} />}
+            {(haveWinner === true) && <EndDialog  img={charToGuess.selectedChar.image} getRandomChar={getRandomChar} text={`You guessed in ${timeNeeded} minutes and ${questCounter} questions`}  title={`Yes!! Is `} name={`${charToGuess.selectedChar.id}` } /> }
+            {(haveLoser === true) && <EndDialog  img={charToGuess.selectedChar.image}  name={`${charToGuess.selectedChar.id}`} title={"No :( The right answer was"}   getRandomChar={getRandomChar} />}
             
           </div>
           </ThemeProvider>

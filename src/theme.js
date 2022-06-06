@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
 import { pink, deepPurple, teal, yellow, grey } from "@mui/material/colors";
+import { NoEncryption } from '@mui/icons-material';
 
 
 export const theme = createTheme({
@@ -8,21 +9,22 @@ export const theme = createTheme({
     primary: {
       main: deepPurple[500], //#673BB7
       contrastText: yellow[300], //#FFF176
-      accent: grey[100],
-      input: yellow[200],
+      accent: grey[100], //#F5F5F5
+      input: yellow[200], //#FFF176
     },
     secondary: {
       main: teal[100], //#9AD6CE
-      over: teal[200], //#8FB8B1
+      over: teal[200], //#80CBC4
       contrastText: pink[500], //#E46CAA
-      backgroundColor: deepPurple[200],
-      hover: deepPurple[400]
+      backgroundColor: deepPurple[200], //#A98DB8
+      hover: deepPurple[400] //#7E57C2
       }
     },
   components: {
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+        
       },
       styleOverrides: {
         root: {
@@ -32,41 +34,31 @@ export const theme = createTheme({
           textTransform: 'none', // removes uppercase transformatio
         },
         containedPrimary: {
-          backgroundColor: '#673BB7',
+          backgroundColor: '#9AD6CE',
           //fontWeight: 700, // makes text bold
           textTransform: 'uppercase',    
           fontSize: '1.5rem', 
-          color: '#7FCDC3' ,
+          color: '#673BB7' ,
           '&:hover': { // changes colors for hover stat
-            backgroundColor: '#482880',         
+            backgroundColor: '#80CBC4',         
           }
         },
         containedSecondary: {
-          // backgroundColor: theme.palette.secondary.backgroundColor,
+          backgroundColor: '#A98DB8',
           //fontWeight: 700, // makes text bold
           //textTransform: 'uppercase',     
           fontSize: '1.2rem', 
-          // color: theme.palette.primary.accent,
+          color: '#F5F5F5',
           padding: '0.2rem',
           margin: '0.1rem',
+          
           '&:hover': { // changes colors for hover stat
-            backgroundColor: '#8FB8B1',         
+            backgroundColor: '#7E57C2',         
           }
         }, 
       }
     },     
-    MuiPaper: {
-        styleOverrides: {
-          root: {
-          color: '#E46CAA',
-          display: 'inline-block',
-        }, 
-        rounded: {
-          borderRadius: 30,
-          // backgroundColor: theme.palette.primary.contrastText,  
-        }
-      }
-    }, 
+
     MuiSwipeableDrawer: {
       styleOverrides: {
       root: {
@@ -81,20 +73,45 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
       root: {
-        // backgroundColor: theme.palette.secondary.backgroundColor,
-        borderRadius: 8,
-        padding: 1,
-        margin: 3
-        }
+        backgroundColor: '#A98DB8',
+        borderRadius: 10,
+        padding: 0,
+        margin: 3,
+        
+        }, 
+      
       }
     },
+    MuiFilledInput: {
+      defaultProps: {
+        disableUnderline: true
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          color: '#E91E63',
+          display: 'inline-block',
+          backgroundColor: '#FFFFFF',
+        }, 
+        rounded: {
+          borderRadius: 30,
+          backgroundColor: '#FFF176',  
+        },
+        // elevation0: {
+        //   backgroundColor: '#F5F5F5',
+        // }, 
+
+      }
+    }, 
     MuiDialog: {
       styleOverrides: {
         root: {
           padding: 10,
         }, 
-      paperScrollBody: {
-          // backgroundColor: theme.palette.primary.accent,
+        paperScrollPaper: {
+          backgroundColor: '#F5F5F5',
+          textAlign: 'center',
         }, 
       container: {
         textAlign: 'center',
@@ -103,8 +120,14 @@ export const theme = createTheme({
     },
     MuiDialogContent: {
       styleOverrides: {
-        dividers: {
-          // color: theme.palette.primary.main, 
+        root: {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        dividers: { //char dialog
+          color: '#673BB7', 
         }
       }
     }, 
@@ -112,35 +135,36 @@ export const theme = createTheme({
       styleOverrides: {
         select: {
           borderRadius: 10,
-          // backgroundColor: theme.palette.secondary.main,
-          // color: theme.palette.primary.main,
+          backgroundColor: '#9AD6CE',
+          color: '#673BB7',
           width: 90,
         }, 
         icon: {
-          // color: theme.palette.primary.main
+          color: '#673BB7'
         }
       }
     }, 
+    
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          // color: theme.palette.primary.main,
+          color: '#673BB7',
         }
       }
     }, 
     MuiInputLabel: {
       defaultProps: {
-        shrink: true,
+        // shrink: true,
       },
     },
     MuiInput: {
       defaultProps: {
         disableUnderline: true,
-        autoFocus: true,
+        //autoFocus: true,
       },
       styleOverrides: {
         root: {
-          // color: theme.palette.primary.main,
+          color: '#673BB7'
         }, 
       }
     }, 

@@ -101,7 +101,7 @@ function Home ({mode, setMode}) {
                             <Button onClick={increaseNum} > <ArrowRightIcon sx={{ color: deepPurple[500] }}></ArrowRightIcon> </Button>
                         </div>
                         <div className="getUserName">
-                            <TextField required={true}  label="ENTER YOUR NAME" type="text" value={value} onChange={(e)=>setValue(e.target.value)}/>
+                            <TextField required={true} id='name' variant='filled' label="ENTER YOUR NAME" type="text" value={value} onChange={(e)=>setValue(e.target.value)}/>
                             
                         </div>
                         <Button variant='contained' color='primary' onClick={submitName}>Play!</Button>
