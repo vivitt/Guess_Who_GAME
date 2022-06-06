@@ -1,9 +1,9 @@
 import React from "react";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
+import { Dialog }  from '@mui/material';
+import { DialogContent } from '@mui/material';
+import Button   from '@mui/material/Button'
 import CloseIcon from '@mui/icons-material/Close';
-import Paper from "@mui/material/Paper";
+import { Paper } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { useSoundContext } from "../context/SoundContext";
 
@@ -17,8 +17,8 @@ function CharDialog({char, open, setOpen}){
   
   return (
     <div >
-      <Dialog open={open} >
-        <Paper scroll="body" >
+      <Dialog open={open} scroll="paper">
+        <Paper square={true}>
      
           <DialogContent dividers={true} >
             <img width='300px' src={require(`../imgs/${imgPath}`)} alt={char.descr} />

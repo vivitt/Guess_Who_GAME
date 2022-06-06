@@ -1,5 +1,5 @@
 import styles from './QuestionInput.module.css'
-import { Button, Select, MenuItem } from '@material-ui/core'
+import { Button, Select, MenuItem } from '@mui/material'
 import { useSoundContext } from '../context/SoundContext';
 function QuestionInput ({questionStatus, firstValue, setFirstValue, firstChoice, secondValue, setSecondValue, secondChoice, submitQuest, answer, mode, questCounter}) {
     const sound = useSoundContext()

@@ -1,14 +1,14 @@
 import React from "react";
-import { Dialog } from "@material-ui/core";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
+import { Dialog } from "@mui/material";
+import { DialogContentText } from "@mui/material";
+import { DialogTitle } from "@mui/material";
+import { DialogActions } from "@mui/material";
+import { DialogContent } from "@mui/material";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom"; 
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 
-function EndDialog({getRandomChar, title, text, img}){
+function EndDialog({getRandomChar, title, text, img, name}){
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate() 
   const charToGuess = useSelectedCharContext()
@@ -24,16 +24,14 @@ function EndDialog({getRandomChar, title, text, img}){
     <div >
       <Dialog  open={open} disableEnforceFocus>
         <DialogTitle>{title}</DialogTitle>
-       
+        
         <DialogContent>
           <div className="dialogImg">
-         <img  src={require(`../imgs/${img}`)} alt='img' />
+            <img  src={require(`../imgs/${img}`)} alt='img' />
+            <p>{name}</p>
          </div>
-          <DialogContentText>
-            
-            <p>{text}</p>
-          </DialogContentText>
         </DialogContent>
+        <DialogContentText><p>{text}</p></DialogContentText>
         <DialogActions>
           <Button onClick={navGame} 
                   variant="contained" color="primary" autoFocus>
