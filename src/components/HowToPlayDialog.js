@@ -1,8 +1,8 @@
 import React from "react";
 import Dialog from '@mui/material/Dialog';
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
 import CloseIcon from '@mui/icons-material/Close';
 import { useSoundContext } from "../context/SoundContext";
 

@@ -3,8 +3,8 @@ import style from './Char.module.css';
 import { useState } from 'react';
 import CharDialog from './CharDialog';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Button } from '@material-ui/core'
-import { deepPurple } from "@material-ui/core/colors";
+import { Button } from '@mui/material'
+import { deepPurple } from "@mui/material/colors";
 import { useSoundContext } from '../context/SoundContext';
 
 function Char({char, discardedChars, setDiscardedChars}) {

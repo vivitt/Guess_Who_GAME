@@ -1,10 +1,10 @@
 import React from "react";
-import { Dialog } from "@material-ui/core";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
+import { Dialog } from "@mui/material";
+import { DialogContentText } from "@mui/material";
+import { DialogTitle } from "@mui/material";
+import { DialogActions } from "@mui/material";
+import { DialogContent } from "@mui/material";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom"; 
 import { useSelectedCharContext } from "../context/SelectedCharContx";
 

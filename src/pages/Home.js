@@ -2,10 +2,11 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useUserContext } from "../context/UserContextProv"
-import { Paper, TextField } from '@material-ui/core'
-import { Button } from "@material-ui/core";
-import { ThemeProvider } from '@material-ui/core';
+import { Paper, TextField } from '@mui/material'
+import { Button } from "@mui/material";
+import { ThemeProvider } from '@mui/material/styles';
 import theme from '../theme';
+
 import { deepPurple } from "@mui/material/colors"
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
@@ -109,8 +110,8 @@ function Home ({mode, setMode}) {
             </div>
         </Paper>
         </div>
- 
         </ThemeProvider>
+        
         
     )
 

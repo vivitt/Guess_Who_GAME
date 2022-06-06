@@ -5,16 +5,17 @@ import Char  from  "../components/Char"
 import { firstChoice, secondChoice } from "../QuestOptions"
 import { useUserContext } from "../context/UserContextProv"
 import { useSelectedCharContext } from "../context/SelectedCharContx";
-import { Paper } from '@material-ui/core'
-import { ThemeProvider } from '@material-ui/core';
+import { Paper } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles';
 import theme from '../theme';
+
 import QuestionInput from "../components/QuestionInput"
 import CurrentGameInfo from "../components/CurrentGameInfo"
 import GuessSection from "../components/GuessSection"
 import Clock from "../components/Clock"
 import EndDialog from '../components/EndDialog';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import FaceIcon from '@mui/icons-material/Face';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { useSoundContext } from '../context/SoundContext';
@@ -30,7 +31,7 @@ function Game ({mode, setMode}) {
     useEffect(() => {
         const currentPlayer = sessionStorage.getItem('CURRENT_PLAYER')
         
-        if (currentPlayer) setUserName(currentPlayer)
+        if (currentPlayer) currentUser.setUserName(currentPlayer)
         
       }, [])
     ////////////////////////////////////
@@ -207,6 +208,7 @@ setState({ ...state, [anchor]: close });
     return (
     
     <ThemeProvider theme={theme}>
+  
     <div className='game'>
          <Paper sx={{backgroundColor: theme.palette.primary.contrastText}} >
         <React.Fragment >
@@ -254,8 +256,8 @@ setState({ ...state, [anchor]: close });
             {(haveLoser === true) && <EndDialog  img={charToGuess.selectedChar.image} text={`The person was ${charToGuess.selectedChar.id}`}  title={"No :( "}   getRandomChar={getRandomChar} />}
             
           </div>
-        
-    </ThemeProvider>
+          </ThemeProvider>
+    
     )
 }
 export default Game

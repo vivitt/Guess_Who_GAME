@@ -231,6 +231,9 @@ body {
 }
 
 @media (max-width: 799px) {
+  .homeImg {
+    display: none;
+  };
   .box, .game {
     display: flex;
     flex-flow: row wrap;
@@ -244,7 +247,5 @@ body {
     flex-flow: row wrap;
     
   };
-  .homeImg {
-    display: none;
-  }
-}
+
+};

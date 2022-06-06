@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
-import { Paper  } from '@material-ui/core'
-import { ThemeProvider } from '@material-ui/core';
+import { Paper  } from '@mui/material'
+import { ThemeProvider } from '@mui/material';
 import { useUserContext } from "../context/UserContextProv"
 //import VisibilityIcon from '@mui/icons-material/Visibility';
 import theme from '../theme';
