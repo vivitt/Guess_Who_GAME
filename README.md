@@ -14,7 +14,7 @@ Built with React and UIMaterials as my final project of the AllWomen Web Dev Boo
 ## Features
 The current version is for one player and has HARD and EASY mode.
 
-##Next Features
+## Next Features
 Two players mode
 
 
