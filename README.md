@@ -1,9 +1,9 @@
 # GuessWho GAME
 
-A gender-inclusive version of the classic guess who game.
+A gender-inclusive version of the classic Guess Who game.
 
 
-Built with React and Material UI as my final project of the AllWomen Web Dev Bootcamp.
+Built with React and Material UI as my final project for the AllWomen Web Dev Bootcamp.
 
 
 
@@ -11,9 +11,11 @@ Built with React and Material UI as my final project of the AllWomen Web Dev Boo
 
 ![Game Page](public/222.jpg?raw=true "Game webpage")
 
-You can play [here](http://www.theguesswhoga.me/)
+Features:
+- Single-player mode
+- Easy and Hard mode
+- Player avatar chooser 
+- ON/OFF Sound effects
 
 
-
-
-
+You can play [here](https://guess-who-game-vivitt.vercel.app/)
